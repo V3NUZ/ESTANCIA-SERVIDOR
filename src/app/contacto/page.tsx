@@ -159,7 +159,7 @@ export default function ContactPage() {
             
             <div className="flex items-center space-x-4">
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-2 border-2 border-blue-700/30"
                 onClick={() => handleQuickContact('phone', 'animalWorld')}
               >
                 <Phone className="mr-2 h-4 w-4" />
@@ -167,7 +167,7 @@ export default function ContactPage() {
               </Button>
               <Button 
                 variant="outline" 
-                className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-medium"
+                className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-2"
                 onClick={() => handleQuickContact('whatsapp', 'animalWorld')}
               >
                 <MessageCircle className="mr-2 h-4 w-4" />
@@ -191,7 +191,7 @@ export default function ContactPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl border-2 border-white/30"
               onClick={() => handleQuickContact('phone', 'animalWorld')}
             >
               <Phone className="mr-2 h-5 w-5" />
@@ -200,7 +200,7 @@ export default function ContactPage() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white bg-white/10 text-white backdrop-blur-sm px-8 py-4 text-lg font-semibold hover:bg-white/20"
+              className="border-white bg-white/10 text-white backdrop-blur-sm px-8 py-4 text-lg font-bold hover:bg-white/20 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl"
               onClick={() => handleQuickContact('phone', 'laEstancia')}
             >
               <Phone className="mr-2 h-5 w-5" />
@@ -234,7 +234,7 @@ export default function ContactPage() {
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{method.title}</h3>
                     <p className="text-gray-600 mb-6">{method.description}</p>
                     <Button 
-                      className={`w-full ${method.color} text-white font-medium`}
+                      className={`w-full ${method.color} text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-white/20`}
                       onClick={() => {
                         if (method.title === 'Llamadas') handleQuickContact('phone')
                         else if (method.title === 'WhatsApp') handleQuickContact('whatsapp')
@@ -317,7 +317,7 @@ export default function ContactPage() {
                 <div className="mt-6 pt-6 border-t border-blue-100">
                   <div className="flex gap-3">
                     <Button 
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-blue-700/30"
                       onClick={() => handleQuickContact('phone', 'animalWorld')}
                     >
                       <Phone className="mr-2 h-4 w-4" />
@@ -325,7 +325,7 @@ export default function ContactPage() {
                     </Button>
                     <Button 
                       variant="outline"
-                      className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                      className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3"
                       onClick={() => handleQuickContact('whatsapp', 'animalWorld')}
                     >
                       <MessageCircle className="mr-2 h-4 w-4" />
@@ -388,7 +388,7 @@ export default function ContactPage() {
                 <div className="mt-6 pt-6 border-t border-green-100">
                   <div className="flex gap-3">
                     <Button 
-                      className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                      className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-green-700/30"
                       onClick={() => handleQuickContact('phone', 'laEstancia')}
                     >
                       <Phone className="mr-2 h-4 w-4" />
@@ -396,7 +396,7 @@ export default function ContactPage() {
                     </Button>
                     <Button 
                       variant="outline"
-                      className="flex-1 border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                      className="flex-1 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3"
                       onClick={() => handleQuickContact('whatsapp', 'laEstancia')}
                     >
                       <MessageCircle className="mr-2 h-4 w-4" />
@@ -504,7 +504,7 @@ export default function ContactPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 text-lg"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl border-2 border-blue-700/30"
                     >
                       {isSubmitting ? (
                         <div className="flex items-center">

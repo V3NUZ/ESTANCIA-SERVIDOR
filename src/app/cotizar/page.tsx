@@ -6,10 +6,11 @@
  * Página especializada para cotizaciones de productos agropecuarios.
  * Formulario completo con categorías, cantidades y contacto directo.
  * 
- * @author Alejandro (V3NUZ)
+ * @author Propietario del Proyecto
  * @version 1.0.0
  * @since 2024
  * @copyright AnimalWorld La Estancia © 2025
+ * @note Desarrollado con soporte técnico de IA
  */
 
 import { useState } from 'react'

@@ -6,10 +6,11 @@
  * Página completa con catálogo de productos, categorías especializadas,
  * sistema de cotización y contacto directo.
  * 
- * @author Alejandro (V3NUZ)
+ * @author Propietario del Proyecto
  * @version 1.0.0
  * @since 2024
  * @copyright AnimalWorld La Estancia © 2025
+ * @note Desarrollado con soporte técnico de IA
  */
 
 import { useState, useEffect } from 'react'
@@ -218,6 +219,18 @@ export default function LaEstanciaPage() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
+      {/* Botón de Volver Atrás */}
+      <div className="container mx-auto px-4 pt-6">
+        <Button 
+          variant="outline" 
+          onClick={() => window.history.back()}
+          className="mb-6 bg-white hover:bg-gray-50 border-2 border-gray-300 text-gray-700 hover:border-gray-400 hover:text-gray-900 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-2"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Volver Atrás
+        </Button>
+      </div>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -234,14 +247,14 @@ export default function LaEstanciaPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-white text-green-700 hover:bg-gray-100 font-semibold"
+                className="bg-white text-green-700 hover:bg-gray-100 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-white/30 rounded-xl px-8 py-4"
                 onClick={() => handleQuickContact('whatsapp')}
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Cotizar por WhatsApp
               </Button>
               <Link href="/cotizar">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-700">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-8 py-4">
                   <Calculator className="mr-2 h-5 w-5" />
                   Formulario de Cotización
                 </Button>
@@ -335,7 +348,7 @@ export default function LaEstanciaPage() {
                     {category.count}
                   </Badge>
                   <Button 
-                    className="w-full bg-green-600 hover:bg-green-700"
+                    className="w-full bg-green-600 hover:bg-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-green-700/30"
                     onClick={() => handleQuickContact('whatsapp')}
                   >
                     Cotizar productos
@@ -384,7 +397,7 @@ export default function LaEstanciaPage() {
                 <CardContent>
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <Button 
-                    className="w-full bg-green-600 hover:bg-green-700"
+                    className="w-full bg-green-600 hover:bg-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-green-700/30"
                     onClick={() => handleProductClick(product)}
                   >
                     Solicitar información
@@ -408,14 +421,14 @@ export default function LaEstanciaPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              className="bg-white text-green-700 hover:bg-gray-100 font-semibold"
+              className="bg-white text-green-700 hover:bg-gray-100 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-white/30 rounded-xl px-8 py-4"
               onClick={() => handleQuickContact('whatsapp')}
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Chatear con Expertos
             </Button>
             <Link href="/cotizar">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-700">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-8 py-4">
                 <Calculator className="mr-2 h-5 w-5" />
                 Solicitar Cotización
               </Button>

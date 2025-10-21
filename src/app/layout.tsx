@@ -1,15 +1,3 @@
-/**
- * Layout Principal - AnimalWorld La Estancia
- * 
- * Layout principal del proyecto con configuración completa de metadatos,
- * tema, fuentes y optimización para SEO.
- * 
- * @author Alejandro (V3NUZ)
- * @version 1.0.0
- * @since 2024
- * @copyright AnimalWorld La Estancia © 2025
- */
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -97,7 +85,6 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Limpiar atributos de extensiones antes de React hydration
               (function() {
                 var problematicAttrs = ['bis_skin_checked', 'data-new-gr-c-s-check-loaded', 'data-gr-ext-installed'];
                 function clean() {

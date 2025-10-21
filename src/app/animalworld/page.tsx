@@ -307,7 +307,7 @@ export default function AnimalWorld() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 border-2 border-blue-700/30 rounded-xl"
               onClick={() => window.location.href = '/productos'}
             >
               Ver Productos
@@ -315,7 +315,7 @@ export default function AnimalWorld() {
             <Button 
               size="lg" 
               variant="outline"
-              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 dark:border-indigo-700 dark:text-indigo-300 dark:hover:bg-indigo-900/20 px-8 py-3 text-lg"
+              className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 dark:border-indigo-700 dark:text-indigo-300 dark:hover:bg-indigo-900/20 px-8 py-4 text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 bg-white/90 backdrop-blur-sm rounded-xl"
               onClick={() => window.location.href = '/contacto'}
             >
               Agendar Cita
@@ -404,7 +404,7 @@ export default function AnimalWorld() {
                   </div>
                   <div className="flex gap-2">
                     <Button 
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-blue-700/30"
                       onClick={() => handleBuyNow(product)}
                     >
                       Comprar Ahora
@@ -478,7 +478,7 @@ export default function AnimalWorld() {
                   {contactInfo.mainLocation.email}
                 </a>
               </div>
-              <Button className="w-full bg-red-600 hover:bg-red-700 text-white text-lg py-3">
+              <Button className="w-full bg-red-600 hover:bg-red-700 text-white text-lg py-3 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl border-2 border-red-700/30">
                 Emergencia 24/7
               </Button>
             </CardContent>
@@ -560,7 +560,7 @@ export default function AnimalWorld() {
               />
               <Button 
                 type="submit" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl border-2 border-blue-700/30"
                 disabled={isSubscribed}
               >
                 {isSubscribed ? '¡Suscrito!' : 'Suscribirse'}
