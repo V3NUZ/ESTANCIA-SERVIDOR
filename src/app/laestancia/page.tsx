@@ -25,6 +25,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
+import { ProductModal } from '@/components/product-modal'
 
 // Información de contacto - La Estancia
 // NOTA: Solo mantenemos la tienda principal, eliminamos punto de venta falso
@@ -154,57 +155,85 @@ export default function LaEstanciaPage() {
       id: 1,
       name: 'Concentrado Super Engorde Bovino',
       category: 'Ganado Bovino',
-      price: 'Cotizar',
+      price: '$45.900',
+      originalPrice: '$55.000',
       image: '/ganado-bovino.jpg',
       badge: 'Más vendido',
-      description: 'Alimento premium para rápido engorde de ganado'
+      description: 'Alimento premium para rápido engorde de ganado',
+      rating: 5,
+      reviews: 128
     },
     {
       id: 2,
       name: 'Semilla Certificada de Maíz',
       category: 'Semillas',
-      price: 'Cotizar',
+      price: '$28.500',
+      originalPrice: '$35.000',
       image: '/semillas-abonos.jpg',
       badge: 'Certificado',
-      description: 'Alta germinación y rendimiento garantizado'
+      description: 'Alta germinación y rendimiento garantizado',
+      rating: 4,
+      reviews: 89
     },
     {
       id: 3,
       name: 'Fertilizante Orgánico Premium',
       category: 'Abonos y Fertilizantes',
-      price: 'Cotizar',
+      price: '$32.000',
+      originalPrice: '$40.000',
       image: '/semillas-abonos.jpg',
       badge: 'Orgánico',
-      description: 'Nutrición completa para cultivos'
+      description: 'Nutrición completa para cultivos',
+      rating: 4,
+      reviews: 67
     },
     {
       id: 4,
       name: 'Pesticida de Amplio Espectro',
       category: 'Pesticidas',
-      price: 'Cotizar',
+      price: '$125.000',
+      originalPrice: '$145.000',
       image: '/pesticidas-herbicidas.jpg',
       badge: 'Profesional',
-      description: 'Control efectivo de plagas agrícolas'
+      description: 'Control efectivo de plagas agrícolas',
+      rating: 5,
+      reviews: 94
     },
     {
       id: 5,
       name: 'Fumigadora de Mochila Profesional',
       category: 'Herramientas para Fumigar',
-      price: 'Cotizar',
+      price: '$285.000',
+      originalPrice: '$320.000',
       image: '/herramientas-fumigar.jpg',
       badge: 'Equipo',
-      description: 'Aplicación precisa y eficiente'
+      description: 'Aplicación precisa y eficiente',
+      rating: 4,
+      reviews: 76
     },
     {
       id: 6,
       name: 'Alimento Balanceado para Caballos',
       category: 'Caballos',
-      price: 'Cotizar',
+      price: '$38.900',
+      originalPrice: '$45.000',
       image: '/caballos-equinos.jpg',
       badge: 'Premium',
-      description: 'Nutrición especializada equina'
+      description: 'Nutrición especializada equina',
+      rating: 5,
+      reviews: 112
     }
   ]
+
+  const handleBuyNow = (product: any) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedProduct(null)
+  }
 
   const handleQuickContact = (method: string) => {
     const info = contactInfo.mainStore
@@ -413,12 +442,26 @@ export default function LaEstanciaPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">{product.description}</p>
-                  <Button 
-                    className="w-full bg-green-600 hover:bg-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-green-700/30"
-                    onClick={() => handleProductClick(product)}
-                  >
-                    Solicitar información
-                  </Button>
+                  <div className="flex items-center justify-center gap-1 mb-2">
+                    {[...Array(product.rating || 5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                    <span className="text-sm text-gray-500 ml-1">({product.reviews || 0})</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <span className="text-2xl font-bold text-green-600">{product.price}</span>
+                    {product.originalPrice && (
+                      <span className="text-sm text-gray-500 line-through">{product.originalPrice}</span>
+                    )}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button 
+                      className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-green-700/30"
+                      onClick={() => handleBuyNow(product)}
+                    >
+                      Comprar
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -430,10 +473,10 @@ export default function LaEstanciaPage() {
       <section className="py-20 px-4 bg-gradient-to-r from-green-600 to-green-800 text-white">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">
-            ¿Necesitas asesoría personalizada?
+            ¿Necesitas cotizar nuestros productos?
           </h2>
           <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-            Nuestros expertos están listos para ayudarte a encontrar las mejores soluciones para tu finca
+            Contáctanos directamente por WhatsApp, teléfono o correo para recibir tu cotización personalizada
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -442,7 +485,7 @@ export default function LaEstanciaPage() {
               onClick={() => handleQuickContact('whatsapp')}
             >
               <MessageCircle className="mr-2 h-5 w-5" />
-              Chatear con Expertos
+              Solicitar Cotización
             </Button>
             <Link href="/cotizar">
               <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-8 py-4">
@@ -455,38 +498,12 @@ export default function LaEstanciaPage() {
       </section>
 
       {/* Product Modal */}
-      {isModalOpen && selectedProduct && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <Card className="max-w-md w-full">
-            <CardHeader>
-              <CardTitle>{selectedProduct.name}</CardTitle>
-              <CardDescription>{selectedProduct.category}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-6">{selectedProduct.description}</p>
-              <div className="space-y-3">
-                <Button 
-                  className="w-full bg-green-600 hover:bg-green-700"
-                  onClick={() => {
-                    handleQuickContact('whatsapp')
-                    closeModal()
-                  }}
-                >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Cotizar por WhatsApp
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                  onClick={closeModal}
-                >
-                  Cerrar
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
+      <ProductModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        product={selectedProduct}
+        brand="laestancia"
+      />
     </div>
   )
 }
