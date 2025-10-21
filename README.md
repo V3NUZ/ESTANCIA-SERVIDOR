@@ -12,8 +12,8 @@
 [![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge)](LICENSE)
 
 [🌐 Visitar Sitio Web](https://animalworld-laestancia.vercel.app) •
-[📧 Contacto](mailto:contacto@laestancia.co) •
-[📱 WhatsApp](https://wa.me/573106871639)
+[📧 Email Desarrollador](mailto:donpepitacos@gmail.com) •
+[🌐 GitHub](https://github.com/V3NUZ)
 
 </div>
 
@@ -21,7 +21,7 @@
 
 ## 📋 Descripción del Proyecto
 
-**AnimalWorld La Estancia** es una plataforma empresarial desarrollada por **V3NUZ** para la gestión comercial de productos agropecuarios y servicios veterinarios en Colombia. Este proyecto representa la transformación digital de dos marcas líderes en el sector:
+**AnimalWorld La Estancia** es una plataforma empresarial líder desarrollada por **Alejandro (V3NUZ)**, experto en soluciones digitales para el sector agropecuario y veterinario en Colombia. Este proyecto representa la vanguardia de la transformación digital, conectando a los clientes con productos y servicios de calidad excepcional.
 
 ### 🏢 Marcas Principales
 
@@ -242,6 +242,15 @@ git commit -m "chore: actualizar dependencias a versiones seguras"
 
 ## 📞 Información Comercial y de Contacto
 
+### 👑 Desarrollador Principal
+
+| Información | Detalle |
+|-------------|---------|
+| **👤 Nombre** | Alejandro (V3NUZ) |
+| **📧 Email Personal** | donpepitacos@gmail.com |
+| **🌐 GitHub** | [@V3NUZ](https://github.com/V3NUZ) |
+| **💼 Rol** | Project Owner & Lead Developer |
+
 ### 🏢 Animal World - Clínica Veterinaria
 
 | Información | Detalle |
@@ -328,12 +337,12 @@ model Producto {
 
 ### 👥 Equipo de Desarrollo
 
-| Rol | Nombre | Responsabilidades |
-|-----|--------|-------------------|
-| **👑 Project Owner** | **V3NUZ** | Visión del proyecto, estrategia y liderazgo técnico |
-| **💻 Full Stack Developer** | AnimalWorld Team | Desarrollo frontend y backend |
-| **🎨 UI/UX Designer** | AnimalWorld Team | Diseño de interfaz y experiencia de usuario |
-| **📊 DevOps Engineer** | V3NUZ | Configuración de CI/CD y despliegue |
+| Rol | Nombre | Contacto | Responsabilidades |
+|-----|--------|----------|-------------------|
+| **👑 Project Owner** | **Alejandro (V3NUZ)** | donpepitacos@gmail.com | Visión del proyecto, estrategia y liderazgo técnico |
+| **💻 Full Stack Developer** | V3NUZ | donpepitacos@gmail.com | Desarrollo frontend y backend completo |
+| **🎨 UI/UX Designer** | AnimalWorld Team | - | Diseño de interfaz y experiencia de usuario |
+| **📊 DevOps Engineer** | V3NUZ | donpepitacos@gmail.com | Configuración de CI/CD y despliegue |
 
 ### 🤝 Cómo Contribuir
 
@@ -392,7 +401,8 @@ Convertirnos en la plataforma líder de agro-negocios en Latinoamérica, expandi
 ### 🛠️ Soporte Técnico
 
 - **📧 Email Técnico**: soporte@animalworld.co
-- **💬 WhatsApp Técnico**: +57 300 000 0000
+- **📧 Email Personal**: donpepitacos@gmail.com
+- **💬 WhatsApp Empresarial**: +57 310 6871639
 - **📋 Sistema de Tickets**: [Portal de Soporte](https://soporte.animalworld.co)
 - **📚 Documentación**: [Wiki del Proyecto](https://docs.animalworld.co)
 
@@ -409,13 +419,14 @@ Convertirnos en la plataforma líder de agro-negocios en Latinoamérica, expandi
 
 ### 🎖️ Créditos de Desarrollo
 
-**Desarrollado con ❤️ por V3NUZ**
+**Desarrollado con ❤️ y pasión por Alejandro (V3NUZ)**
 
-- **👑 Project Lead**: V3NUZ - Arquitectura y desarrollo completo
-- **💻 Full Stack Development**: Implementación frontend y backend
-- **🎨 UI/UX Design**: Diseño de interfaz y experiencia de usuario
-- **📊 DevOps**: Configuración de CI/CD y despliegue automatizado
-- **🔧 Optimización**: Mejoras de rendimiento y SEO
+- **👑 Project Lead**: Alejandro (V3NUZ) - Arquitectura completa y visión del proyecto
+- **💻 Full Stack Development**: Implementación frontend y backend de alta calidad
+- **🎨 UI/UX Design**: Diseño moderno e intuitivo de interfaz y experiencia de usuario
+- **📊 DevOps**: Configuración avanzada de CI/CD y despliegue automatizado
+- **🔧 Optimización**: Mejoras de rendimiento, SEO y experiencia de usuario
+- **🌟 Innovación**: Implementación de tecnologías de vanguardia y mejores prácticas
 
 ### 🙏 Agradecimientos Especiales
 
@@ -429,8 +440,8 @@ Convertirnos en la plataforma líder de agro-negocios en Latinoamérica, expandi
 
 **🌾 AnimalWorld La Estancia - Transformando Digitalmente el Campo Colombiano 🌾**
 
-*Desarrollado por V3NUZ | Copyright © 2025 | Todos los derechos reservados*
+*Desarrollado con ❤️ por Alejandro (V3NUZ) | Copyright © 2025 | Todos los derechos reservados*
 
-[![Built with love by V3NUZ](https://img.shields.io/badge/Built%20with%20❤️%20by-V3NUZ-red?style=for-the-badge)](https://github.com/V3NUZ)
+[![Built with love by Alejandro (V3NUZ)](https://img.shields.io/badge/Built%20with%20❤️%20by-Alejandro%20(V3NUZ)-red?style=for-the-badge)](https://github.com/V3NUZ)
 
 </div>
