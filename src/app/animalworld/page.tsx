@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -14,30 +15,31 @@ import {
   Menu, X, ChevronRight, MessageCircle, ArrowLeft, Store
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { ProductModal } from '@/components/product-modal'
 
 export default function AnimalWorld() {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState('todos')
+  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  // Contact information for Animal World
+  // Contact information for Animal World - Mismo lugar, diferentes pisos
   const contactInfo = {
-    veterinaryClinic: {
-      name: "Clínica Veterinaria Animal World",
+    mainLocation: {
+      name: "Animal World - Clínica y Tienda de Mascotas",
       address: "Carrera 58 #128b-88, Bogotá, Colombia",
       phone: "+57 314 2822728",
       whatsapp: "+57 314 2822728",
       email: "clinica@animalworld.co"
     },
-    petStore: {
-      name: "Tienda de Mascotas Animal World",
-      address: "Calle 127 #45-67, Bogotá, Colombia", 
-      phone: "+57 320 4567890",
-      whatsapp: "+57 320 4567890",
-      email: "tienda@animalworld.co"
+    details: {
+      clinic: "Segundo piso - Clínica Veterinaria",
+      store: "Primer piso - Tienda de Mascotas"
     }
   }
 
@@ -72,6 +74,16 @@ export default function AnimalWorld() {
     }
   }
 
+  const handleBuyNow = (product: any) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedProduct(null)
+  }
+
   const petCategories = [
     { 
       icon: Dog, 
@@ -89,8 +101,9 @@ export default function AnimalWorld() {
 
   const featuredProducts = [
     {
+      id: 1,
       name: 'Alimento Premium para Perros Adultos',
-      category: 'Perros',
+      category: 'perros',
       price: '$45.900',
       originalPrice: '$52.000',
       image: '🐕',
@@ -100,8 +113,9 @@ export default function AnimalWorld() {
       description: 'Nutrición completa con pollo y arroz, fortificado con vitaminas'
     },
     {
+      id: 2,
       name: 'Alimento Súper Premium para Gatos',
-      category: 'Gatos',
+      category: 'gatos',
       price: '$38.500',
       originalPrice: '$44.000',
       image: '🐈',
@@ -111,8 +125,9 @@ export default function AnimalWorld() {
       description: 'Fórmula especial con salmón y vegetales'
     },
     {
+      id: 3,
       name: 'Juguetes Interactivos para Perros',
-      category: 'Perros',
+      category: 'perros',
       price: '$25.000',
       originalPrice: '$30.000',
       image: '🦴',
@@ -122,8 +137,9 @@ export default function AnimalWorld() {
       description: 'Juguetes resistentes que estimulan la mente'
     },
     {
+      id: 4,
       name: 'Arena Higiénica Premium para Gatos',
-      category: 'Gatos',
+      category: 'gatos',
       price: '$28.500',
       originalPrice: '$32.000',
       image: '🏺',
@@ -191,10 +207,17 @@ export default function AnimalWorld() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+    <div className="min-h-screen w-full overflow-x-hidden">
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/animal-world-bg.jpg)' }}
+      >
+        <div className="absolute inset-0 bg-white/85 dark:bg-gray-900/85"></div>
+      </div>
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 dark:bg-gray-900/90">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex h-16 items-center justify-between">
           <div className="flex items-center space-x-3">
             <Button 
               variant="ghost" 
@@ -219,7 +242,7 @@ export default function AnimalWorld() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" className="text-sm text-blue-900 hover:text-indigo-500">Inicio</Button>
+            <Button variant="ghost" className="text-sm text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/'}>Inicio</Button>
             <Button variant="ghost" className="text-sm text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/productos'}>Productos</Button>
             <Button variant="ghost" className="text-sm text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/servicios'}>Servicios</Button>
             <Button variant="ghost" className="text-sm text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/contacto'}>Contacto</Button>
@@ -261,8 +284,8 @@ export default function AnimalWorld() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden border-t bg-white/95 backdrop-blur-md dark:bg-gray-900/95">
-            <nav className="container py-4 space-y-2">
-              <Button variant="ghost" className="w-full justify-start text-blue-900 hover:text-indigo-500">Inicio</Button>
+            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-4 space-y-2">
+              <Button variant="ghost" className="w-full justify-start text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/'}>Inicio</Button>
               <Button variant="ghost" className="w-full justify-start text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/productos'}>Productos</Button>
               <Button variant="ghost" className="w-full justify-start text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/servicios'}>Servicios</Button>
               <Button variant="ghost" className="w-full justify-start text-blue-900 hover:text-indigo-500" onClick={() => window.location.href = '/contacto'}>Contacto</Button>
@@ -274,7 +297,7 @@ export default function AnimalWorld() {
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
-        <div className="container mx-auto text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 dark:text-white mb-6">
             Bienvenido a <span className="text-indigo-600">Animal World</span>
           </h1>
@@ -303,8 +326,8 @@ export default function AnimalWorld() {
 
       {/* Stats Section */}
       <section className="py-16 px-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="flex justify-center mb-2">
@@ -320,7 +343,7 @@ export default function AnimalWorld() {
 
       {/* Categories Section */}
       <section className="py-16 px-4">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-3xl font-bold text-center text-blue-900 dark:text-white mb-12">
             Categorías Principales
           </h2>
@@ -349,11 +372,11 @@ export default function AnimalWorld() {
 
       {/* Featured Products */}
       <section className="py-16 px-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-3xl font-bold text-center text-blue-900 dark:text-white mb-12">
             Productos Destacados
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {featuredProducts.map((product, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                 <CardHeader className="text-center">
@@ -380,15 +403,11 @@ export default function AnimalWorld() {
                     <span className="text-sm text-gray-500 line-through">{product.originalPrice}</span>
                   </div>
                   <div className="flex gap-2">
-                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-                      Contactar para Comprar
-                    </Button>
                     <Button 
-                      variant="outline" 
-                      onClick={() => window.location.href = '/contacto'}
-                      className="px-3"
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+                      onClick={() => handleBuyNow(product)}
                     >
-                      <ArrowLeft className="h-4 w-4" />
+                      Comprar Ahora
                     </Button>
                   </div>
                 </CardContent>
@@ -400,11 +419,11 @@ export default function AnimalWorld() {
 
       {/* Services Section */}
       <section className="py-16 px-4">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-3xl font-bold text-center text-blue-900 dark:text-white mb-12">
             Nuestros Servicios
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {services.map((service, index) => (
               <Card key={index} className="text-center p-6 border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                 <div className="flex justify-center mb-4">
@@ -426,11 +445,47 @@ export default function AnimalWorld() {
 
       {/* Contact Section */}
       <section className="py-16 px-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <h2 className="text-3xl font-bold text-center text-blue-900 dark:text-white mb-12">
             Contacto Animal World
           </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          
+          {/* Información Principal */}
+          <Card className="p-8 border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm max-w-2xl mx-auto mb-8">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl font-bold text-blue-900 dark:text-white flex items-center justify-center gap-2">
+                <Heart className="h-6 w-6 text-red-500" />
+                {contactInfo.mainLocation.name}
+              </CardTitle>
+              <p className="text-gray-600 dark:text-gray-300">
+                Clínica veterinaria y tienda en el mismo lugar
+              </p>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                <MapPin className="h-5 w-5" />
+                <span className="text-base">{contactInfo.mainLocation.address}</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                <Phone className="h-5 w-5" />
+                <a href={`tel:${contactInfo.mainLocation.phone.replace(/[^\d]/g, '')}`} className="text-base hover:text-blue-600">
+                  {contactInfo.mainLocation.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                <Mail className="h-5 w-5" />
+                <a href={`mailto:${contactInfo.mainLocation.email}`} className="text-base hover:text-blue-600">
+                  {contactInfo.mainLocation.email}
+                </a>
+              </div>
+              <Button className="w-full bg-red-600 hover:bg-red-700 text-white text-lg py-3">
+                Emergencia 24/7
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Detalles por Piso */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Veterinary Clinic */}
             <Card className="p-6 border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
               <CardHeader>
@@ -438,27 +493,21 @@ export default function AnimalWorld() {
                   <Heart className="h-5 w-5 text-red-500" />
                   Clínica Veterinaria
                 </CardTitle>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {contactInfo.details.clinic}
+                </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <MapPin className="h-4 w-4" />
-                  <span className="text-sm">{contactInfo.veterinaryClinic.address}</span>
+                  <span className="text-sm">{contactInfo.mainLocation.address}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <Phone className="h-4 w-4" />
-                  <a href={`tel:${contactInfo.veterinaryClinic.phone.replace(/[^\d]/g, '')}`} className="text-sm hover:text-blue-600">
-                    {contactInfo.veterinaryClinic.phone}
+                  <a href={`tel:${contactInfo.mainLocation.phone.replace(/[^\d]/g, '')}`} className="text-sm hover:text-blue-600">
+                    {contactInfo.mainLocation.phone}
                   </a>
                 </div>
-                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <Mail className="h-4 w-4" />
-                  <a href={`mailto:${contactInfo.veterinaryClinic.email}`} className="text-sm hover:text-blue-600">
-                    {contactInfo.veterinaryClinic.email}
-                  </a>
-                </div>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
-                  Emergencia 24/7
-                </Button>
               </CardContent>
             </Card>
 
@@ -469,27 +518,21 @@ export default function AnimalWorld() {
                   <Store className="h-5 w-5 text-green-500" />
                   Tienda de Mascotas
                 </CardTitle>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {contactInfo.details.store}
+                </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <MapPin className="h-4 w-4" />
-                  <span className="text-sm">{contactInfo.petStore.address}</span>
+                  <span className="text-sm">{contactInfo.mainLocation.address}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <Phone className="h-4 w-4" />
-                  <a href={`tel:${contactInfo.petStore.phone.replace(/[^\d]/g, '')}`} className="text-sm hover:text-blue-600">
-                    {contactInfo.petStore.phone}
+                  <a href={`tel:${contactInfo.mainLocation.phone.replace(/[^\d]/g, '')}`} className="text-sm hover:text-blue-600">
+                    {contactInfo.mainLocation.phone}
                   </a>
                 </div>
-                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <Mail className="h-4 w-4" />
-                  <a href={`mailto:${contactInfo.petStore.email}`} className="text-sm hover:text-blue-600">
-                    {contactInfo.petStore.email}
-                  </a>
-                </div>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                  Ver Productos
-                </Button>
               </CardContent>
             </Card>
           </div>
@@ -498,7 +541,7 @@ export default function AnimalWorld() {
 
       {/* Newsletter */}
       <section className="py-16 px-4">
-        <div className="container mx-auto text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto border border-blue-200 dark:border-blue-800">
             <h2 className="text-2xl font-bold text-blue-900 dark:text-white mb-4">
               Mantente Conectado
@@ -526,6 +569,16 @@ export default function AnimalWorld() {
           </div>
         </div>
       </section>
+
+      {/* Product Modal */}
+      {selectedProduct && (
+        <ProductModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          product={selectedProduct}
+          brand="animalworld"
+        />
+      )}
     </div>
   )
 }

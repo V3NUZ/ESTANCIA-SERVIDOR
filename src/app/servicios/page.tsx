@@ -240,10 +240,10 @@ export default function ServicesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
       {/* Header */}
       <div className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-40">
-        <div className="container">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-4">
               <Button 
@@ -292,7 +292,7 @@ export default function ServicesPage() {
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-16">
-        <div className="container text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Servicios Veterinarios Presenciales
           </h2>
@@ -312,7 +312,7 @@ export default function ServicesPage() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold"
+              className="border-white bg-white/10 text-white backdrop-blur-sm px-8 py-4 text-lg font-semibold"
               onClick={() => window.open(`https://wa.me/${contactInfo.animalWorld.whatsapp.replace(/[^\d]/g, '')}`, '_blank')}
             >
               <span className="mr-2">💬</span>
@@ -323,8 +323,8 @@ export default function ServicesPage() {
       </div>
 
       {/* Location Info */}
-      <section className="py-8 px-4 bg-blue-50">
-        <div className="container">
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-blue-50">
+        <div className="max-w-7xl mx-auto w-full">
           <Card className="border-blue-200 bg-white">
             <CardContent className="p-6">
               <div className="flex items-center justify-center gap-6">
@@ -343,15 +343,15 @@ export default function ServicesPage() {
       </section>
 
       {/* Emergency Services */}
-      <section className="py-12 px-4 bg-white">
-        <div className="container">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Contacto Directo</h2>
             <p className="text-lg text-gray-600">
               Comunícate directamente con nuestra clínica veterinaria
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {emergencyServices.map((service, index) => {
               const Icon = service.icon
               return (
@@ -378,8 +378,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="container">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nuestros Servicios Veterinarios</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -387,7 +387,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {filteredServices.map((service) => {
               const Icon = typeof service.icon === 'string' ? null : service.icon
               return (
@@ -483,8 +483,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Specialists Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nuestros Veterinarios</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -492,7 +492,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {specialists.map((specialist) => (
               <Card key={specialist.id} className="text-center hover:shadow-lg transition-shadow border-gray-200">
                 <CardContent className="p-6">
@@ -534,8 +534,8 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-green-600 text-white">
-        <div className="container text-center">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-green-600 text-white">
+        <div className="max-w-7xl mx-auto w-full text-center">
           <h2 className="text-3xl font-bold mb-4">
             ¿Necesitas Atención Veterinaria?
           </h2>
@@ -554,7 +554,7 @@ export default function ServicesPage() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold"
+              className="border-white bg-white/10 text-white backdrop-blur-sm px-8 py-4 text-lg font-semibold"
               onClick={() => window.open(`https://wa.me/${contactInfo.animalWorld.whatsapp.replace(/[^\d]/g, '')}`, '_blank')}
             >
               <span className="mr-2">💬</span>

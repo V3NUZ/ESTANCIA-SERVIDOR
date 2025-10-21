@@ -12,8 +12,7 @@ import {
   Menu, X, ChevronRight, MessageCircle, ArrowLeft, Store, Tractor
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { CartButton } from '@/components/cart-button'
-import { cartService } from '@/lib/cart'
+import { ProductModal } from '@/components/product-modal'
 
 export default function LaEstancia() {
   const router = useRouter()
@@ -22,6 +21,8 @@ export default function LaEstancia() {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState('todos')
+  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
   // Contact information for La Estancia
@@ -74,28 +75,13 @@ export default function LaEstancia() {
   }
 
   const handleBuyNow = (product: any) => {
-    // Agregar producto al carrito
-    cartService.addToCart({
-      id: product.id.toString(),
-      name: product.name,
-      price: product.price,
-      icon: product.icon,
-      description: product.description,
-      category: product.category
-    })
-    router.push('/comprar')
+    setSelectedProduct(product)
+    setIsModalOpen(true)
   }
 
-  const handleAddToCart = (product: any) => {
-    // Agregar producto al carrito
-    cartService.addToCart({
-      id: product.id.toString(),
-      name: product.name,
-      price: product.price,
-      icon: product.icon,
-      description: product.description,
-      category: product.category
-    })
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedProduct(null)
   }
 
   const farmCategories = [
@@ -217,7 +203,14 @@ export default function LaEstancia() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-lime-50 dark:from-gray-900 dark:via-green-900 dark:to-lime-900">
+    <div className="min-h-screen">
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/la-estancia-bg.jpg)' }}
+      >
+        <div className="absolute inset-0 bg-white/85 dark:bg-gray-900/85"></div>
+      </div>
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 dark:bg-gray-900/90">
         <div className="container flex h-16 items-center justify-between">
@@ -245,16 +238,9 @@ export default function LaEstancia() {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" className="text-sm text-green-900 hover:text-emerald-500">Inicio</Button>
+            <Button variant="ghost" className="text-sm text-green-900 hover:text-emerald-500" onClick={() => window.location.href = '/'}>Inicio</Button>
             <Button variant="ghost" className="text-sm text-green-900 hover:text-emerald-500" onClick={() => window.location.href = '/productos'}>Productos</Button>
             <Button variant="ghost" className="text-sm text-green-900 hover:text-emerald-500" onClick={() => window.location.href = '/contacto'}>Contacto</Button>
-            <CartButton />
-            <Button 
-              className="bg-green-600 hover:bg-green-700 text-white text-sm"
-              onClick={() => window.location.href = '/comprar'}
-            >
-              Ver Carrito
-            </Button>
             <Button
               variant="ghost"
               size="icon"
@@ -269,7 +255,6 @@ export default function LaEstancia() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            <CartButton />
             <Button
               variant="ghost"
               size="icon"
@@ -295,15 +280,9 @@ export default function LaEstancia() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t bg-white/95 backdrop-blur-md dark:bg-gray-900/95">
             <nav className="container py-4 space-y-2">
-              <Button variant="ghost" className="w-full justify-start text-green-900 hover:text-emerald-500">Inicio</Button>
+              <Button variant="ghost" className="w-full justify-start text-green-900 hover:text-emerald-500" onClick={() => window.location.href = '/'}>Inicio</Button>
               <Button variant="ghost" className="w-full justify-start text-green-900 hover:text-emerald-500" onClick={() => window.location.href = '/productos'}>Productos</Button>
               <Button variant="ghost" className="w-full justify-start text-green-900 hover:text-emerald-500" onClick={() => window.location.href = '/contacto'}>Contacto</Button>
-              <Button 
-                className="w-full bg-green-600 hover:bg-green-700 text-white"
-                onClick={() => window.location.href = '/comprar'}
-              >
-                Ver Carrito
-              </Button>
             </nav>
           </div>
         )}
@@ -419,17 +398,10 @@ export default function LaEstancia() {
                   </div>
                   <div className="flex gap-2">
                     <Button 
-                      className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                      className="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium"
                       onClick={() => handleBuyNow(product)}
                     >
                       Comprar Ahora
-                    </Button>
-                    <Button 
-                      variant="outline"
-                      className="flex-1 border-green-600 text-green-600 hover:bg-green-50"
-                      onClick={() => handleAddToCart(product)}
-                    >
-                      Agregar
                     </Button>
                   </div>
                 </CardContent>
@@ -485,8 +457,7 @@ export default function LaEstancia() {
               <div className="space-y-2">
                 <div className="text-green-200 hover:text-white cursor-pointer" onClick={() => window.location.href = '/'}>Inicio</div>
                 <div className="text-green-200 hover:text-white cursor-pointer" onClick={() => window.location.href = '/productos'}>Productos</div>
-                <div className="text-green-200 hover:text-white cursor-pointer" onClick={() => window.location.href = '/cotizar'}>Cotizar</div>
-                <div className="text-green-200 hover:text-white cursor-pointer" onClick={() => window.location.href = '/comprar'}>Mi Carrito</div>
+                <div className="text-green-200 hover:text-white cursor-pointer" onClick={() => window.location.href = '/contacto'}>Contacto</div>
               </div>
             </div>
             <div>
@@ -503,6 +474,16 @@ export default function LaEstancia() {
           </div>
         </div>
       </footer>
+
+      {/* Product Modal */}
+      {selectedProduct && (
+        <ProductModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          product={selectedProduct}
+          brand="laestancia"
+        />
+      )}
     </div>
   )
 }

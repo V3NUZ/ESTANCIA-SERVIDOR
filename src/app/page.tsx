@@ -12,6 +12,7 @@ import {
   Instagram, Facebook, Twitter
 } from 'lucide-react'
 import Link from 'next/link'
+import { Navigation } from '@/components/navigation'
 
 // Información de contacto - Colombia
 const contactInfo = {
@@ -49,7 +50,7 @@ const brands = [
     color: 'from-blue-600 to-blue-800',
     href: '/animalworld',
     features: ['Atención veterinaria presencial', 'Productos premium', 'Servicios especializados'],
-    image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop'
+    image: '/animal-world-card.jpg'
   },
   {
     name: 'La Estancia',
@@ -58,7 +59,7 @@ const brands = [
     color: 'from-green-600 to-green-800',
     href: '/laestancia',
     features: ['Insumos ganadería', 'Semillas certificadas', 'Equipamiento profesional'],
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop'
+    image: '/la-estancia-card.jpg'
   }
 ]
 
@@ -96,8 +97,7 @@ const services = [
 const stats = [
   { label: 'Clientes Satisfechos', value: '10,000+', icon: Users, color: 'text-blue-600' },
   { label: 'Productos Disponibles', value: '500+', icon: ShoppingBag, color: 'text-green-600' },
-  { label: 'Años de Experiencia', value: '15+', icon: Shield, color: 'text-purple-600' },
-  { label: 'Especialistas', value: '25+', icon: Stethoscope, color: 'text-orange-600' }
+  { label: 'Años de Experiencia', value: '15+', icon: Shield, color: 'text-purple-600' }
 ]
 
 export default function Home() {
@@ -136,50 +136,9 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white w-full overflow-x-hidden" suppressHydrationWarning={true}>
       {/* Header */}
-      <header className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              {/* Logo */}
-              <div className="flex items-center gap-3">
-                <img 
-                  src="https://z-cdn-media.chatglm.cn/files/64d94c45-27c9-45e1-8ad3-9bc04b2fa260_logo.jpg?auth_key=1792540140-75a2b2d8c6d347fda35095901213cea9-0-94f7f0e249dcd9265a490ea16dc0a8b3"
-                  alt="AnimalWorld La Estancia"
-                  className="h-12 w-auto rounded-lg"
-                />
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900">AnimalWorld</h1>
-                  <p className="text-sm font-semibold text-green-700">La Estancia</p>
-                </div>
-              </div>
-            </div>
-            
-            <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/productos" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Productos</Link>
-              <Link href="/servicios" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Servicios</Link>
-              <Link href="/contacto" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contacto</Link>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
-                <Phone className="w-4 h-4 mr-2" />
-                {contactInfo.animalWorld.phone}
-              </Button>
-            </nav>
-
-            <div className="flex items-center gap-3">
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={() => handleQuickContact('whatsapp')}
-                className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-medium"
-              >
-                <span className="mr-1">💬</span>
-                WhatsApp
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 text-white py-20">
@@ -194,23 +153,9 @@ export default function Home() {
               con semillas certificadas. Calidad y confianza en Bogotá.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
-                onClick={() => handleQuickContact('phone', 'animalWorld')}
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Llamar Animal World
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold"
-                onClick={() => handleQuickContact('phone', 'laEstancia')}
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Llamar La Estancia
-              </Button>
+              <p className="text-lg opacity-90 max-w-2xl mx-auto">
+                Explora nuestras marcas especializadas abajo para encontrar exactamente lo que necesitas
+              </p>
             </div>
           </div>
         </div>
@@ -258,8 +203,8 @@ export default function Home() {
       </section>
 
       {/* Brands Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Elige tu Destino
@@ -269,7 +214,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto w-full">
             {brands.map((brand, index) => (
               <Card key={index} className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-0 shadow-lg">
                 <div className="relative h-56 overflow-hidden">
@@ -303,13 +248,6 @@ export default function Home() {
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </Link>
-                    <Button 
-                      variant="outline" 
-                      onClick={() => window.history.back()}
-                      className="px-4 py-3"
-                    >
-                      <ArrowLeft className="h-5 w-5" />
-                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -319,9 +257,9 @@ export default function Home() {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -337,8 +275,8 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Nuestros Servicios
@@ -356,12 +294,7 @@ export default function Home() {
                   <CardContent className="p-8">
                     <Icon className={`w-14 h-14 mx-auto mb-5 ${service.color}`} />
                     <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                    <p className="text-gray-600 mb-6">{service.description}</p>
-                    <Link href={service.href}>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium">
-                        Ver más
-                      </Button>
-                    </Link>
+                    <p className="text-gray-600">{service.description}</p>
                   </CardContent>
                 </Card>
               )
@@ -371,8 +304,8 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-green-600 text-white">
-        <div className="container mx-auto text-center">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-green-600 text-white">
+        <div className="max-w-7xl mx-auto w-full text-center">
           <h2 className="text-4xl font-bold mb-4">
             Mantente Informado
           </h2>
@@ -397,7 +330,7 @@ export default function Home() {
 
       {/* Contact Bar */}
       <section className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid md:grid-cols-2 gap-8 text-center">
             <div className="flex items-center justify-center gap-4">
               <div className="bg-blue-600 p-3 rounded-full">
@@ -425,7 +358,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-16">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -9,9 +10,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { 
   Search, Filter, Star, Heart, Share2,
   Dog, Cat, ChevronRight,
-  Truck, Shield, Award, Phone, Mail, MessageCircle, ArrowLeft
+  Truck, Shield, Award, Phone, Mail, MessageCircle, ShoppingCart, ShoppingBag
 } from 'lucide-react'
 import Link from 'next/link'
+import { Navigation } from '@/components/navigation'
+import { BackButton } from '@/components/back-button'
+import { ProductModal } from '@/components/product-modal'
 
 // Información de contacto - Colombia
 const contactInfo = {
@@ -288,11 +292,24 @@ const sortOptions = [
 ]
 
 export default function ProductsPage() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('todos')
   const [sortBy, setSortBy] = useState('relevance')
   const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 })
   const [showFilters, setShowFilters] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleBuyNow = (product: any) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedProduct(null)
+  }
 
   const filteredProducts = products
     .filter(product => {
@@ -357,41 +374,43 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
       {/* Header */}
-      <div className="sticky top-0 z-40 w-full border-b bg-white shadow-lg">
-        <div className="container">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="flex items-center gap-3">
-                <img 
-                  src="https://z-cdn-media.chatglm.cn/files/64d94c45-27c9-45e1-8ad3-9bc04b2fa260_logo.jpg?auth_key=1792540140-75a2b2d8c6d347fda35095901213cea9-0-94f7f0e249dcd9265a490ea16dc0a8b3"
-                  alt="AnimalWorld La Estancia"
-                  className="h-8 w-auto rounded-lg"
-                />
-                <div>
-                  <h1 className="text-xl font-bold text-gray-900">AnimalWorld</h1>
-                  <p className="text-xs text-green-700 font-semibold">La Estancia</p>
-                </div>
-              </Link>
-              <div className="h-8 w-px bg-gray-300"></div>
-              <h2 className="text-2xl font-bold text-gray-900">Catálogo de Productos</h2>
-              <Badge variant="secondary" className="bg-blue-100 text-blue-700 font-medium">
-                {filteredProducts.length} productos
-              </Badge>
+      <Navigation />
+
+      {/* Page Header */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <BackButton href="/" />
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900">Catálogo de Productos</h1>
+                <p className="text-gray-600 mt-1">Encuentra todo lo que necesitas para tus animales</p>
+              </div>
+            </div>
+            <Badge variant="secondary" className="bg-blue-100 text-blue-700 font-medium">
+              {filteredProducts.length} productos
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      {/* Search and Filters */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
+          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input
+                placeholder="Buscar productos..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              />
             </div>
             
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <Input
-                  placeholder="Buscar productos..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-64 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div>
-              
+            <div className="flex items-center gap-4">
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-48 border-gray-300 focus:border-blue-500">
                   <SelectValue />
@@ -409,7 +428,7 @@ export default function ProductsPage() {
                 variant="outline"
                 size="icon"
                 onClick={() => setShowFilters(!showFilters)}
-                className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="border-gray-300 text-gray-700 hover:bg-gray-50 lg:hidden"
               >
                 <Filter className="h-4 w-4" />
               </Button>
@@ -438,7 +457,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      <div className="container py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           <aside className={`${showFilters ? 'block' : 'hidden'} lg:block w-64 flex-shrink-0`}>
@@ -464,7 +483,11 @@ export default function ProductsPage() {
                           }`}
                           onClick={() => setSelectedCategory(category.value)}
                         >
-                          {typeof Icon === 'string' ? <span className="mr-2">{Icon}</span> : Icon && <Icon className="mr-2 h-4 w-4" />}
+                          {typeof category.icon === 'string' ? (
+                            <span className="mr-2">{category.icon}</span>
+                          ) : Icon ? (
+                            <Icon className="mr-2 h-4 w-4" />
+                          ) : null}
                           {category.label}
                         </Button>
                       )
@@ -477,44 +500,29 @@ export default function ProductsPage() {
                   <h3 className="font-semibold mb-3 text-gray-900">Rango de Precio</h3>
                   <div className="space-y-3">
                     <div>
-                      <label className="text-sm text-gray-600">Mínimo</label>
+                      <label className="text-sm text-gray-600">Mínimo: ${priceRange.min.toLocaleString('es-CO')}</label>
                       <Input
-                        type="number"
+                        type="range"
+                        min="0"
+                        max="100000"
+                        step="5000"
                         value={priceRange.min}
-                        onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))}
-                        placeholder="0"
-                        className="border-gray-300 focus:border-blue-500"
+                        onChange={(e) => setPriceRange(prev => ({ ...prev, min: parseInt(e.target.value) }))}
+                        className="w-full"
                       />
                     </div>
                     <div>
-                      <label className="text-sm text-gray-600">Máximo</label>
+                      <label className="text-sm text-gray-600">Máximo: ${priceRange.max.toLocaleString('es-CO')}</label>
                       <Input
-                        type="number"
+                        type="range"
+                        min="0"
+                        max="100000"
+                        step="5000"
                         value={priceRange.max}
-                        onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-                        placeholder="100000"
-                        className="border-gray-300 focus:border-blue-500"
+                        onChange={(e) => setPriceRange(prev => ({ ...prev, max: parseInt(e.target.value) }))}
+                        className="w-full"
                       />
                     </div>
-                  </div>
-                </div>
-
-                {/* Features */}
-                <div>
-                  <h3 className="font-semibold mb-3 text-gray-900">Características</h3>
-                  <div className="space-y-2">
-                    <label className="flex items-center space-x-2">
-                      <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" />
-                      <span className="text-sm text-gray-700">Envío gratis</span>
-                    </label>
-                    <label className="flex items-center space-x-2">
-                      <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" />
-                      <span className="text-sm text-gray-700">En stock</span>
-                    </label>
-                    <label className="flex items-center space-x-2">
-                      <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" />
-                      <span className="text-sm text-gray-700">Ofertas</span>
-                    </label>
                   </div>
                 </div>
               </CardContent>
@@ -524,113 +532,146 @@ export default function ProductsPage() {
           {/* Products Grid */}
           <main className="flex-1">
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-16">
-                <div className="text-6xl mb-4">🔍</div>
-                <h3 className="text-2xl font-semibold mb-2 text-gray-900">No se encontraron productos</h3>
-                <p className="text-gray-600">Intenta ajustar los filtros o tu búsqueda</p>
+              <div className="text-center py-12">
+                <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">No se encontraron productos</h3>
+                <p className="text-gray-500">Intenta ajustar los filtros o términos de búsqueda</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredProducts.map(product => {
-                  const brandInfo = getBrandInfo(product.brand)
-                  return (
-                    <Card key={product.id} className="hover:shadow-xl transition-all duration-300 hover:scale-105 group border-gray-200 bg-white">
-                      <CardHeader className="relative pb-3">
-                        <div className="flex justify-between items-start mb-2">
-                          <Badge className={`${getBrandColor(product.brand)} text-white`}>
+                {filteredProducts.map((product) => (
+                  <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    {/* Product Image */}
+                    <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                      <div className="text-6xl">{product.image}</div>
+                      {product.badge && (
+                        <Badge className="absolute top-3 left-3 bg-red-500 text-white">
+                          {product.badge}
+                        </Badge>
+                      )}
+                      <div className="absolute top-3 right-3 flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="h-8 w-8 bg-white/80 hover:bg-white"
+                        >
+                          <Heart className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="h-8 w-8 bg-white/80 hover:bg-white"
+                        >
+                          <Share2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+
+                    <CardContent className="pt-0">
+                      <div className="p-4">
+                        {/* Brand and Category */}
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge className={`${getBrandColor(product.brand)} text-white text-xs`}>
                             {product.brand}
                           </Badge>
-                          {product.badge && (
-                            <Badge variant="secondary" className="bg-orange-100 text-orange-700">
-                              {product.badge}
-                            </Badge>
-                          )}
-                        </div>
-                        <div className="text-6xl text-center mb-3 group-hover:scale-110 transition-transform">
-                          {product.image}
-                        </div>
-                        <CardTitle className="text-lg text-gray-900 text-center">
-                          {product.name}
-                        </CardTitle>
-                        <CardDescription className="text-center text-gray-600">
-                          {product.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="pt-0">
-                        <div className="flex items-center justify-center mb-3">
-                          {renderStars(product.rating)}
-                          <span className="ml-2 text-sm text-gray-600">({product.reviews})</span>
-                        </div>
-                        
-                        <div className="space-y-2 mb-4">
-                          {product.features.map((feature, index) => (
-                            <div key={index} className="flex items-center space-x-2">
-                              <ChevronRight className="h-3 w-3 text-blue-600 flex-shrink-0" />
-                              <span className="text-sm text-gray-700">{feature}</span>
-                            </div>
-                          ))}
+                          <span className="text-xs text-gray-500 capitalize">{product.category}</span>
                         </div>
 
-                        <div className="flex items-center justify-between mb-4">
-                          <div>
-                            {product.originalPrice ? (
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl font-bold text-green-600">
-                                  ${product.price.toLocaleString('es-CO')}
-                                </span>
-                                <span className="text-sm text-gray-500 line-through">
-                                  ${product.originalPrice.toLocaleString('es-CO')}
-                                </span>
-                              </div>
-                            ) : (
-                              <span className="text-xl font-bold text-gray-900">
-                                ${product.price.toLocaleString('es-CO')}
+                        {/* Product Name */}
+                        <h3 className="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+                          {product.name}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                          {product.description}
+                        </p>
+
+                        {/* Rating */}
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="flex items-center">
+                            {renderStars(product.rating)}
+                          </div>
+                          <span className="text-sm text-gray-600">({product.reviews})</span>
+                        </div>
+
+                        {/* Features */}
+                        <div className="mb-4">
+                          <div className="flex flex-wrap gap-1">
+                            {product.features.slice(0, 2).map((feature, index) => (
+                              <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                                {feature}
                               </span>
+                            ))}
+                            {product.features.length > 2 && (
+                              <span className="text-xs text-gray-500">+{product.features.length - 2} más</span>
                             )}
                           </div>
-                          <Badge variant="outline" className="text-green-700 border-green-600">
-                            Stock: {product.stock}
-                          </Badge>
                         </div>
-                        
-                        <div className="space-y-2">
-                          <Button 
-                            className="w-full bg-green-600 hover:bg-green-700 text-white font-medium"
-                            onClick={() => handleContactClick(product.name, 'whatsapp', product.brand.toLowerCase() as 'animalWorld' | 'laEstancia')}
-                          >
-                            <span className="mr-2">💬</span>
-                            WhatsApp {product.brand}
-                          </Button>
-                          <div className="grid grid-cols-2 gap-2">
-                            <Button 
-                              variant="outline" 
-                              size="sm"
-                              className="border-gray-300 text-gray-700 hover:bg-gray-50"
-                              onClick={() => handleContactClick(product.name, 'phone', product.brand.toLowerCase() as 'animalWorld' | 'laEstancia')}
-                            >
-                              <Phone className="mr-1 h-3 w-3" />
-                              Llamar
-                            </Button>
-                            <Button 
-                              variant="outline" 
-                              size="sm"
-                              className="border-gray-300 text-gray-700 hover:bg-gray-50"
-                              onClick={() => handleContactClick(product.name, 'email', product.brand.toLowerCase() as 'animalWorld' | 'laEstancia')}
-                            >
-                              <Mail className="mr-1 h-3 w-3" />
-                              Email
-                            </Button>
+
+                        {/* Price */}
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <div className="text-2xl font-bold text-green-600">
+                              ${product.price.toLocaleString('es-CO')}
+                            </div>
+                            {product.originalPrice && (
+                              <div className="text-sm text-gray-500 line-through">
+                                ${product.originalPrice.toLocaleString('es-CO')}
+                              </div>
+                            )}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            Stock: {product.stock}
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
+
+                        {/* Action Buttons */}
+                        <div className="flex gap-2">
+                          <Button
+                            onClick={() => handleBuyNow(product)}
+                            className={`flex-1 ${getBrandColor(product.brand)} hover:opacity-90 text-white font-medium`}
+                          >
+                            Comprar Ahora
+                          </Button>
+                        </div>
+
+                        {/* Contact Options */}
+                        <div className="mt-3 pt-3 border-t border-gray-100">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">¿Consultas?</span>
+                            <div className="flex gap-1">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="h-6 px-2 text-xs text-gray-600 hover:text-blue-600"
+                                onClick={() => handleContactClick(product.name, 'whatsapp', product.brand.toLowerCase() as 'animalWorld' | 'laEstancia')}
+                              >
+                                <MessageCircle className="mr-1 h-3 w-3" />
+                                WhatsApp
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             )}
           </main>
         </div>
       </div>
+
+      {/* Product Modal */}
+      {selectedProduct && (
+        <ProductModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          product={selectedProduct}
+          brand={selectedProduct.brand === 'Animal World' ? 'animalworld' : 'laestancia'}
+        />
+      )}
     </div>
   )
 }
