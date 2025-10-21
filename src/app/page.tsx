@@ -140,69 +140,127 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 text-white py-20">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="relative py-20 px-4 bg-gray-50">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Todo para tus Animales<br/>en Bogotá
             </h2>
-            <p className="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Clínica veterinaria presencial para mascotas y productos agropecuarios 
               con semillas certificadas. Calidad y confianza en Bogotá.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <p className="text-lg opacity-90 max-w-2xl mx-auto">
-                Explora nuestras marcas especializadas abajo para encontrar exactamente lo que necesitas
-              </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button 
+                size="lg" 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold"
+                onClick={() => window.location.href = '#brands'}
+              >
+                Explorar Marcas
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 text-lg font-semibold"
+                onClick={() => window.location.href = '/contacto'}
+              >
+                Contactar Ahora
+                <Phone className="ml-2 h-5 w-5" />
+              </Button>
             </div>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Explora nuestras marcas especializadas abajo para encontrar exactamente lo que necesitas
+            </p>
           </div>
         </div>
       </section>
 
       {/* Locations Info */}
-      <section className="py-12 px-4 bg-blue-50">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="border-blue-200 bg-white">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-600 p-3 rounded-full">
-                    <MapPin className="w-6 h-6 text-white" />
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Nuestras Sedes en Bogotá
+              </h3>
+              <p className="text-lg text-gray-600">
+                Dos ubicaciones estratégicas para servirte mejor
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="hover:shadow-lg transition-all duration-300 border-gray-200">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-600 p-3 rounded-full flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-xl text-gray-900 mb-3">Animal World - Clínica Veterinaria</h4>
+                      <div className="space-y-2 text-gray-600">
+                        <p className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4 text-blue-600" />
+                          {contactInfo.animalWorld.address}
+                        </p>
+                        <p className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-blue-600" />
+                          {contactInfo.animalWorld.phone}
+                        </p>
+                        <p className="flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-blue-600" />
+                          {contactInfo.animalWorld.email}
+                        </p>
+                      </div>
+                      <Button 
+                        className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+                        onClick={() => handleQuickContact('phone', 'animalWorld')}
+                      >
+                        Contactar
+                      </Button>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900 mb-2">Animal World - Clínica Veterinaria</h3>
-                    <p className="text-gray-600 mb-1">📍 {contactInfo.animalWorld.address}</p>
-                    <p className="text-gray-600 mb-1">📞 {contactInfo.animalWorld.phone}</p>
-                    <p className="text-gray-600 mb-1">💬 {contactInfo.animalWorld.whatsapp}</p>
-                    <p className="text-gray-600">📧 {contactInfo.animalWorld.email}</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-all duration-300 border-gray-200">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-green-600 p-3 rounded-full flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-xl text-gray-900 mb-3">La Estancia - Agropecuarios</h4>
+                      <div className="space-y-2 text-gray-600">
+                        <p className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4 text-green-600" />
+                          {contactInfo.laEstancia.address}
+                        </p>
+                        <p className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-green-600" />
+                          {contactInfo.laEstancia.phone}
+                        </p>
+                        <p className="flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-green-600" />
+                          {contactInfo.laEstancia.email}
+                        </p>
+                      </div>
+                      <Button 
+                        className="mt-4 bg-green-600 hover:bg-green-700 text-white"
+                        onClick={() => handleQuickContact('phone', 'laEstancia')}
+                      >
+                        Contactar
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-green-200 bg-white">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-600 p-3 rounded-full">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-gray-900 mb-2">La Estancia - Agropecuarios</h3>
-                    <p className="text-gray-600 mb-1">📍 {contactInfo.laEstancia.address}</p>
-                    <p className="text-gray-600 mb-1">📞 {contactInfo.laEstancia.phone}</p>
-                    <p className="text-gray-600 mb-1">💬 {contactInfo.laEstancia.whatsapp}</p>
-                    <p className="text-gray-600">📧 {contactInfo.laEstancia.email}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Brands Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section id="brands" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
