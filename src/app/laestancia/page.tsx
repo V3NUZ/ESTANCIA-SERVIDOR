@@ -48,72 +48,144 @@ export default function LaEstanciaPage() {
   const [selectedProduct, setSelectedProduct] = useState<any>(null)
 
   // Categorías principales de productos agropecuarios
-  // Incluye la categoría de Insumos Agrícolas con semillas que fue restaurada
+  // Actualizado con todas las categorías solicitadas
   const farmCategories = [
     { 
       icon: '🐄', 
       name: 'Ganado Bovino', 
       count: '200+ productos',
-      description: 'Concentrados, suplementos y medicamentos',
-      color: 'from-amber-500 to-amber-700'
+      description: 'Concentrados, suplementos y medicamentos para ganado',
+      color: 'from-amber-500 to-amber-700',
+      image: '/ganado-bovino.jpg'
+    },
+    { 
+      icon: '🐴', 
+      name: 'Caballos', 
+      count: '150+ productos',
+      description: 'Alimentos, suplementos y cuidado equino',
+      color: 'from-purple-500 to-purple-700',
+      image: '/caballos-equinos.jpg'
+    },
+    { 
+      icon: '🐷', 
+      name: 'Cerdos', 
+      count: '120+ productos',
+      description: 'Nutrición especializada y productos porcinos',
+      color: 'from-pink-500 to-pink-700',
+      image: '/cerdos-porcinos.jpg'
     },
     { 
       icon: '🐔', 
       name: 'Aves y Corral', 
       count: '180+ productos',
-      description: 'Alimentos balanceados y equipamiento',
-      color: 'from-orange-500 to-orange-700'
+      description: 'Alimentos balanceados y equipamiento avícola',
+      color: 'from-orange-500 to-orange-700',
+      image: '/aves-corral.jpg'
     },
     { 
-      icon: '🐷', 
-      name: 'Porcinos', 
-      count: '100+ productos',
-      description: 'Nutrición especializada para cerdos',
-      color: 'from-pink-500 to-pink-700'
-    },
-    { 
-      icon: '🐴', 
-      name: 'Equinos', 
+      icon: '🐐', 
+      name: 'Cabras', 
       count: '80+ productos',
-      description: 'Forrajes, herrajes y cuidado',
-      color: 'from-purple-500 to-purple-700'
+      description: 'Nutrición y manejo caprino especializado',
+      color: 'from-yellow-500 to-yellow-700',
+      image: '/cabras-caprinas.jpg'
     },
     { 
       icon: '🌱', 
-      name: 'Insumos Agrícolas', // Categoría restaurada - incluye semillas
+      name: 'Semillas', 
+      count: '100+ productos',
+      description: 'Semillas certificadas de alta calidad',
+      color: 'from-green-500 to-green-700',
+      image: '/semillas-abonos.jpg'
+    },
+    { 
+      icon: '🌿', 
+      name: 'Abonos y Fertilizantes', 
+      count: '90+ productos',
+      description: 'Fertilizantes orgánicos y químicos',
+      color: 'from-emerald-500 to-emerald-700',
+      image: '/semillas-abonos.jpg'
+    },
+    { 
+      icon: '🛡️', 
+      name: 'Pesticidas', 
+      count: '70+ productos',
+      description: 'Control de plagas agrícolas profesional',
+      color: 'from-red-500 to-red-700',
+      image: '/pesticidas-herbicidas.jpg'
+    },
+    { 
+      icon: '🌾', 
+      name: 'Herbicidas', 
+      count: '60+ productos',
+      description: 'Control de malezas selectivo',
+      color: 'from-lime-500 to-lime-700',
+      image: '/pesticidas-herbicidas.jpg'
+    },
+    { 
+      icon: '🚜', 
+      name: 'Herramientas para Fumigar', 
       count: '50+ productos',
-      description: 'Semillas certificadas y fertilizantes',
-      color: 'from-green-500 to-green-700'
+      description: 'Equipamiento y aplicación profesional',
+      color: 'from-blue-500 to-blue-700',
+      image: '/herramientas-fumigar.jpg'
     }
   ]
 
   const featuredProducts = [
     {
       id: 1,
-      name: 'Concentrado Super Engorde',
+      name: 'Concentrado Super Engorde Bovino',
       category: 'Ganado Bovino',
       price: 'Cotizar',
-      image: '/la-estancia-card.jpg',
+      image: '/ganado-bovino.jpg',
       badge: 'Más vendido',
-      description: 'Alimento premium para rápido engorde'
+      description: 'Alimento premium para rápido engorde de ganado'
     },
     {
       id: 2,
-      name: 'Semilla de Maíz Híbrido',
-      category: 'Insumos Agrícolas',
+      name: 'Semilla Certificada de Maíz',
+      category: 'Semillas',
       price: 'Cotizar',
-      image: '/la-estancia-bg.jpg',
+      image: '/semillas-abonos.jpg',
       badge: 'Certificado',
-      description: 'Alta germinación y rendimiento'
+      description: 'Alta germinación y rendimiento garantizado'
     },
     {
       id: 3,
-      name: 'Balanceado para Gallinas',
-      category: 'Aves y Corral',
+      name: 'Fertilizante Orgánico Premium',
+      category: 'Abonos y Fertilizantes',
       price: 'Cotizar',
-      image: '/animal-world-card.jpg',
+      image: '/semillas-abonos.jpg',
       badge: 'Orgánico',
-      description: 'Ponedoras con alto contenido proteico'
+      description: 'Nutrición completa para cultivos'
+    },
+    {
+      id: 4,
+      name: 'Pesticida de Amplio Espectro',
+      category: 'Pesticidas',
+      price: 'Cotizar',
+      image: '/pesticidas-herbicidas.jpg',
+      badge: 'Profesional',
+      description: 'Control efectivo de plagas agrícolas'
+    },
+    {
+      id: 5,
+      name: 'Fumigadora de Mochila Profesional',
+      category: 'Herramientas para Fumigar',
+      price: 'Cotizar',
+      image: '/herramientas-fumigar.jpg',
+      badge: 'Equipo',
+      description: 'Aplicación precisa y eficiente'
+    },
+    {
+      id: 6,
+      name: 'Alimento Balanceado para Caballos',
+      category: 'Caballos',
+      price: 'Cotizar',
+      image: '/caballos-equinos.jpg',
+      badge: 'Premium',
+      description: 'Nutrición especializada equina'
     }
   ]
 
@@ -156,8 +228,8 @@ export default function LaEstanciaPage() {
               La Estancia<br/>Productos Agropecuarios
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
-              Semillas certificadas, insumos agrícolas y productos especializados para ganadería. 
-              Calidad garantizada para el campo colombiano.
+              Insumos para todo tipo de ganado, pesticidas, herbicidas, semillas, abonos y herramientas para fumigar. 
+              Cuidamos lo que amas, del campo al hogar.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -240,12 +312,22 @@ export default function LaEstanciaPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {farmCategories.map((category, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
-                <CardHeader className="text-center pb-4">
-                  <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${category.color} flex items-center justify-center text-3xl mb-4`}>
-                    {category.icon}
+              <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg overflow-hidden group">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${category.color} opacity-60`}></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <div className="text-5xl mb-2">{category.icon}</div>
+                      <h3 className="text-xl font-bold">{category.name}</h3>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl">{category.name}</CardTitle>
+                </div>
+                <CardHeader className="text-center pb-4">
                   <CardDescription>{category.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
