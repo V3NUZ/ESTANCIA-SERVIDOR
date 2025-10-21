@@ -1,0 +1,7 @@
+server.ts
+dev.log
+server.log
+node_modules
+.git
+.next
+out
