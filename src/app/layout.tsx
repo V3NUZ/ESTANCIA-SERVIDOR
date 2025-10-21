@@ -1,3 +1,15 @@
+/**
+ * Layout Principal - AnimalWorld La Estancia
+ * 
+ * Componente raíz que envuelve toda la aplicación.
+ * Configura el tema, metadata, y estructura base del sitio.
+ * 
+ * @author V3NUZ (Project Owner & Lead Developer)
+ * @version 2.0.0
+ * @since 2025-10-21
+ * @copyright AnimalWorld La Estancia © 2025
+ */
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

@@ -3,15 +3,15 @@
 /**
  * Página de Cotizaciones - La Estancia
  * 
- * Esta página permite a los clientes solicitar cotizaciones personalizadas para:
- * - Productos agropecuarios (ganado, aves, porcinos, equinos)
- * - Insumos agrícolas (semillas, fertilizantes, agroquímicos)
+ * Sistema de cotizaciones personalizado para productos agropecuarios.
+ * Permite a los clientes solicitar presupuestos vía WhatsApp.
  * 
- * El formulario envía la información directamente por WhatsApp
+ * Desarrollado por V3NUZ para optimizar el proceso de ventas.
  * 
- * @author AnimalWorld La Estancia Team
+ * @author V3NUZ (Project Owner & Lead Developer)
  * @version 2.0.0
  * @since 2025-10-21
+ * @copyright AnimalWorld La Estancia © 2025
  */
 
 import { useState } from 'react'

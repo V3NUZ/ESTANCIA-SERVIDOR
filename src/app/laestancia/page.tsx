@@ -3,15 +3,15 @@
 /**
  * Página principal de La Estancia - Productos Agropecuarios
  * 
- * Esta página muestra:
- * - Catálogo de productos agropecuarios
- * - Categorías principales (ganado, aves, porcinos, equinos, insumos agrícolas)
- * - Información de contacto y cotizaciones
- * - Productos destacados con precios y descripciones
+ * Esta página muestra el catálogo completo de productos agropecuarios
+ * incluyendo semillas certificadas, fertilizantes e insumos agrícolas.
  * 
- * @author AnimalWorld La Estancia Team
+ * Desarrollado por V3NUZ como parte del ecosistema AnimalWorld La Estancia.
+ * 
+ * @author V3NUZ (Project Owner & Lead Developer)
  * @version 2.0.0
  * @since 2025-10-21
+ * @copyright AnimalWorld La Estancia © 2025
  */
 
 import { useState, useEffect } from 'react'

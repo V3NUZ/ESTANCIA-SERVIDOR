@@ -4,9 +4,12 @@
  * Este componente asegura que cada vez que el usuario navega a una nueva página,
  * el scroll se posicione automáticamente en la parte superior.
  * 
- * @author AnimalWorld La Estancia Team
+ * Desarrollado por V3NUZ para mejorar la experiencia de usuario.
+ * 
+ * @author V3NUZ (Project Owner & Lead Developer)
  * @version 1.0.0
  * @since 2025-10-21
+ * @copyright AnimalWorld La Estancia © 2025
  */
 
 'use client'
