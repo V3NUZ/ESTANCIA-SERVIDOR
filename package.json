@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "dev": "nodemon --exec \"npx tsx server.ts\" --watch server.ts --watch src --ext ts,tsx,js,jsx 2>&1 | tee dev.log",
     "build": "next build",
     "start": "NODE_ENV=production tsx server.ts 2>&1 | tee server.log",
+=======
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
@@ -74,8 +80,11 @@
     "react-syntax-highlighter": "^15.6.1",
     "recharts": "^2.15.4",
     "sharp": "^0.34.3",
+<<<<<<< HEAD
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
+=======
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
     "sonner": "^2.0.6",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 export function HydrationFix() {
   useEffect(() => {
+<<<<<<< HEAD
     // Función para limpiar atributos no deseados
     const cleanUnwantedAttributes = () => {
       // Eliminar atributos bis_skin_checked
@@ -13,10 +14,14 @@ export function HydrationFix() {
       });
 
       // También limpiar otros atributos problemáticos que las extensiones puedan añadir
+=======
+    const cleanUnwantedAttributes = () => {
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
       const problematicAttributes = ['bis_skin_checked', 'data-new-gr-c-s-check-loaded', 'data-gr-ext-installed'];
       
       problematicAttributes.forEach(attr => {
         const elements = document.querySelectorAll(`[${attr}]`);
+<<<<<<< HEAD
         elements.forEach(element => {
           element.removeAttribute(attr);
         });
@@ -69,6 +74,21 @@ export function HydrationFix() {
     });
 
     // Empezar a observar el documento con mayor cobertura
+=======
+        elements.forEach(element => element.removeAttribute(attr));
+      });
+    };
+
+    // Ejecutar limpieza inmediata y con retrasos
+    cleanUnwantedAttributes();
+    const timeouts = [100, 500, 1000].map(delay => setTimeout(cleanUnwantedAttributes, delay));
+
+    // Observador para cambios futuros
+    const observer = new MutationObserver(() => {
+      setTimeout(cleanUnwantedAttributes, 0);
+    });
+
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
     observer.observe(document.body, {
       childList: true,
       subtree: true,
@@ -76,6 +96,7 @@ export function HydrationFix() {
       attributeFilter: ['bis_skin_checked', 'data-new-gr-c-s-check-loaded', 'data-gr-ext-installed']
     });
 
+<<<<<<< HEAD
     // También observar el head
     if (document.head) {
       observer.observe(document.head, {
@@ -89,6 +110,10 @@ export function HydrationFix() {
     // Limpiar al desmontar
     return () => {
       timeouts.forEach(timeout => clearTimeout(timeout));
+=======
+    return () => {
+      timeouts.forEach(clearTimeout);
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
       observer.disconnect();
     };
   }, []);

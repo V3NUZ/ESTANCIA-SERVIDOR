@@ -1,5 +1,22 @@
 'use client'
 
+<<<<<<< HEAD
+=======
+/**
+ * Página de Cotizaciones - La Estancia
+ * 
+ * Sistema de cotizaciones personalizado para productos agropecuarios.
+ * Permite a los clientes solicitar presupuestos vía WhatsApp.
+ * 
+ * Desarrollado por V3NUZ para optimizar el proceso de ventas.
+ * 
+ * @author V3NUZ (Project Owner & Lead Developer)
+ * @version 2.0.0
+ * @since 2025-10-21
+ * @copyright AnimalWorld La Estancia © 2025
+ */
+
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -7,11 +24,20 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Textarea } from '@/components/ui/textarea'
 import { 
+<<<<<<< HEAD
   ArrowLeft, Phone, Mail, MapPin, MessageCircle, 
   Calculator, Store, Tractor, CheckCircle, Send
 } from 'lucide-react'
 
 // Información de contacto - La Estancia
+=======
+  ArrowLeft, Phone, MessageCircle, 
+  Calculator, Store, CheckCircle, Send
+} from 'lucide-react'
+
+// Información de contacto - La Estancia (solo tienda principal)
+// NOTA: Se eliminó el punto de venta falso de Funza
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 const contactInfo = {
   mainStore: {
     name: "La Estancia - Productos Agropecuarios",
@@ -19,6 +45,7 @@ const contactInfo = {
     phone: "+57 310 6871639",
     whatsapp: "+57 310 6871639",
     email: "contacto@laestancia.co"
+<<<<<<< HEAD
   },
   farmSupplies: {
     name: "La Estancia - Insumos Agrícolas",
@@ -29,12 +56,23 @@ const contactInfo = {
   }
 }
 
+=======
+  }
+}
+
+// Categorías de productos disponibles para cotización
+// Incluye Insumos Agrícolas con semillas (categoría restaurada)
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 const productCategories = [
   { id: 'ganado', name: 'Ganado Bovino', icon: '🐄', description: 'Concentrados, suplementos, medicamentos' },
   { id: 'aves', name: 'Aves', icon: '🐓', description: 'Balanceados, incubadoras, vitaminas' },
   { id: 'porcinos', name: 'Porcinos', icon: '🐷', description: 'Nutrición especializada' },
   { id: 'equinos', name: 'Equinos', icon: '🐴', description: 'Forrajes, herrajes, cuidado' },
+<<<<<<< HEAD
   { id: 'agricola', name: 'Insumos Agrícolas', icon: '🌱', description: 'Fertilizantes, semillas, agroquímicos' }
+=======
+  { id: 'agricola', name: 'Insumos Agrícolas', icon: '🌱', description: 'Semillas, fertilizantes, agroquímicos' }
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 ]
 
 export default function CotizarPage() {
@@ -378,6 +416,7 @@ export default function CotizarPage() {
       {/* Contact Info */}
       <section className="py-12 px-4 bg-green-900 text-white">
         <div className="container mx-auto">
+<<<<<<< HEAD
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <Store className="w-12 h-12 mx-auto mb-4 text-green-300" />
@@ -393,6 +432,14 @@ export default function CotizarPage() {
               <p className="text-green-200 mb-2">{contactInfo.farmSupplies.phone}</p>
               <p className="text-green-200">{contactInfo.farmSupplies.email}</p>
             </div>
+=======
+          <div className="max-w-2xl mx-auto text-center">
+            <Store className="w-12 h-12 mx-auto mb-4 text-green-300" />
+            <h3 className="text-xl font-bold mb-2">Tienda Principal - La Estancia</h3>
+            <p className="text-green-200 mb-2">{contactInfo.mainStore.address}</p>
+            <p className="text-green-200 mb-2">{contactInfo.mainStore.phone}</p>
+            <p className="text-green-200">{contactInfo.mainStore.email}</p>
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
           </div>
         </div>
       </section>

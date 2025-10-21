@@ -17,6 +17,7 @@ model User {
   id        String   @id @default(cuid())
   email     String   @unique
   name      String?
+<<<<<<< HEAD
   role      String   @default("user")
   phone     String?
   address   String?
@@ -32,4 +33,49 @@ model Post {
   authorId  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+=======
+  password  String?
+  role      String   @default("user") // user, admin
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  products Product[]
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  business    String   // animalworld, laestancia
+  icon        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  products Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  originalPrice Float?
+  categoryType String  // category type like 'perros', 'gatos', 'ganado', etc.
+  business    String   // animalworld, laestancia
+  image       String?
+  icon        String?
+  badge       String?
+  rating      Int      @default(0)
+  reviews     Int      @default(0)
+  stock       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  
+  authorId   String
+  author     User     @relation(fields: [authorId], references: [id])
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 }

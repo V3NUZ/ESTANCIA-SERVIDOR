@@ -1,5 +1,22 @@
 'use client'
 
+<<<<<<< HEAD
+=======
+/**
+ * Página principal de La Estancia - Productos Agropecuarios
+ * 
+ * Esta página muestra el catálogo completo de productos agropecuarios
+ * incluyendo semillas certificadas, fertilizantes e insumos agrícolas.
+ * 
+ * Desarrollado por V3NUZ como parte del ecosistema AnimalWorld La Estancia.
+ * 
+ * @author V3NUZ (Project Owner & Lead Developer)
+ * @version 2.0.0
+ * @since 2025-10-21
+ * @copyright AnimalWorld La Estancia © 2025
+ */
+
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -25,7 +42,12 @@ export default function LaEstancia() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
+<<<<<<< HEAD
   // Contact information for La Estancia
+=======
+  // Información de contacto - La Estancia
+  // NOTA: Solo mantenemos la tienda principal, eliminamos punto de venta falso
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
   const contactInfo = {
     mainStore: {
       name: "La Estancia - Productos Agropecuarios",
@@ -33,6 +55,7 @@ export default function LaEstancia() {
       phone: "+57 310 6871639",
       whatsapp: "+57 310 6871639",
       email: "contacto@laestancia.co"
+<<<<<<< HEAD
     },
     farmSupplies: {
       name: "La Estancia - Insumos Agrícolas",
@@ -40,6 +63,8 @@ export default function LaEstancia() {
       phone: "+57 315 8912345",
       whatsapp: "+57 315 8912345",
       email: "agricola@laestancia.co"
+=======
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
     }
   }
 
@@ -84,6 +109,11 @@ export default function LaEstancia() {
     setSelectedProduct(null)
   }
 
+<<<<<<< HEAD
+=======
+  // Categorías principales de productos agropecuarios
+  // Incluye la categoría de Insumos Agrícolas con semillas que fue restaurada
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
   const farmCategories = [
     { 
       icon: '🐄', 
@@ -108,9 +138,23 @@ export default function LaEstancia() {
       name: 'Equinos', 
       count: '80+ productos',
       description: 'Forrajes, herrajes y cuidado'
+<<<<<<< HEAD
     }
   ]
 
+=======
+    },
+    { 
+      icon: '🌱', 
+      name: 'Insumos Agrícolas', // Categoría restaurada - incluye semillas
+      count: '50+ productos',
+      description: 'Semillas, fertilizantes y agroquímicos'
+    }
+  ]
+
+  // Productos destacados en la página principal
+  // Incluye productos de todas las categorías, incluyendo semillas agrícolas
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
   const featuredProducts = [
     {
       id: 1,
@@ -149,6 +193,21 @@ export default function LaEstancia() {
       description: 'Fórmula premium para caballos de competencia'
     },
     {
+<<<<<<< HEAD
+=======
+      id: 15,
+      name: 'Semillas de Maíz Híbrido',
+      category: 'agricola',
+      price: '$120.000',
+      originalPrice: '$140.000',
+      image: '🌽',
+      badge: 'Alto rendimiento',
+      rating: 4,
+      reviews: 189,
+      description: 'Semillas certificadas de máximo rendimiento'
+    },
+    {
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
       id: 2,
       name: 'Sal Mineralizado para Ganado',
       category: 'ganado',
@@ -186,7 +245,14 @@ export default function LaEstancia() {
     
     // Insumos Agrícolas
     { id: 14, name: 'Fertilizante Orgánico Premium', category: 'agricola', price: '$55.000', originalPrice: '$65.000', rating: 5, reviews: 234, icon: '🌱', description: 'Fertilizante 100% orgánico' },
+<<<<<<< HEAD
     { id: 15, name: 'Semillas de Maíz Híbrido', category: 'agricola', price: '$120.000', originalPrice: '$140.000', rating: 4, reviews: 189, icon: '🌽', description: 'Semillas de alto rendimiento' }
+=======
+    { id: 15, name: 'Semillas de Maíz Híbrido', category: 'agricola', price: '$120.000', originalPrice: '$140.000', rating: 4, reviews: 189, icon: '🌽', description: 'Semillas de alto rendimiento' },
+    { id: 16, name: 'Semillas de Soya Certificadas', category: 'agricola', price: '$85.000', originalPrice: '$95.000', rating: 5, reviews: 156, icon: '🌰', description: 'Semillas de soya de alta calidad' },
+    { id: 17, name: 'Fertilizante NPK 15-15-15', category: 'agricola', price: '$75.000', originalPrice: '$85.000', rating: 4, reviews: 203, icon: '🧪', description: 'Fertilizante balanceado completo' },
+    { id: 18, name: 'Herbicida Selectivo', category: 'agricola', price: '$45.000', originalPrice: '$52.000', rating: 4, reviews: 178, icon: '🌿', description: 'Control selectivo de malezas' }
+>>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
   ]
 
   const filteredProducts = activeCategory === 'todos' 
