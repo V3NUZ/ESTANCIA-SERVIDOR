@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useMemo } from 'react'
 import { Button } from '@/components/ui/button'
-import { Phone, Menu, X, Home } from 'lucide-react'
+import { Phone, Menu, X, Home, Calculator } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -47,6 +47,7 @@ export function Navigation() {
     const links: NavLink[] = [
       { href: '/productos', label: 'Productos' },
       { href: '/servicios', label: 'Servicios' },
+      { href: '/cotizar', label: 'Cotización', icon: Calculator },
       { href: '/contacto', label: 'Contacto' },
     ]
     

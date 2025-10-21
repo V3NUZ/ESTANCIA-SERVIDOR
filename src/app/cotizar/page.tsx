@@ -42,60 +42,140 @@ const productCategories = [
     id: 'ganado',
     name: 'Ganado Bovino',
     icon: '🐄',
-    description: 'Alimentos, suplementos y medicamentos',
+    description: 'Alimentos, suplementos y medicamentos para ganado',
     products: [
       'Concentrados para engorde',
       'Sales minerales',
       'Suplementos vitamínicos',
-      'Medicamentos antiparasitarios'
+      'Medicamentos antiparasitarios',
+      'Alimentos para cría y levante',
+      'Bloques nutricionales'
     ]
   },
   {
-    id: 'aves',
-    name: 'Aves y Corral',
-    icon: '🐔',
-    description: 'Alimentos balanceados y equipamiento',
+    id: 'caballos',
+    name: 'Caballos',
+    icon: '🐴',
+    description: 'Alimentos y cuidados para equinos',
     products: [
-      'Concentrados para pollos',
-      'Alimento para gallinas ponedoras',
-      'Suplementos para aves',
-      'Equipamiento avícola'
+      'Alimentos balanceados',
+      'Suplementos vitamínicos',
+      'Cuidado de cascos',
+      'Equipamiento ecuestre',
+      'Forrajes de calidad',
+      'Minerales para caballos'
     ]
   },
   {
-    id: 'porcinos',
-    name: 'Porcinos',
+    id: 'cerdos',
+    name: 'Cerdos',
     icon: '🐷',
     description: 'Nutrición y salud porcina',
     products: [
       'Concentrados para cerdos',
       'Preiniciadores y iniciadores',
       'Suplementos de crecimiento',
-      'Medicamentos específicos'
+      'Medicamentos específicos',
+      'Alimentos para gestación',
+      'Promotores de crecimiento'
     ]
   },
   {
-    id: 'equinos',
-    name: 'Equinos',
-    icon: '🐴',
-    description: 'Alimentos y cuidados para caballos',
+    id: 'aves',
+    name: 'Aves y Corral',
+    icon: '🐔',
+    description: 'Alimentos balanceados y equipamiento avícola',
     products: [
-      'Alimentos balanceados',
+      'Concentrados para pollos',
+      'Alimento para gallinas ponedoras',
+      'Suplementos para aves',
+      'Equipamiento avícola',
+      'Alimentos para pavos',
+      'Vitaminas avícolas'
+    ]
+  },
+  {
+    id: 'cabras',
+    name: 'Cabras',
+    icon: '🐐',
+    description: 'Nutrición especializada para caprinos',
+    products: [
+      'Concentrados para cabras',
+      'Sales minerales caprinas',
       'Suplementos vitamínicos',
-      'Cuidado de cascos',
-      'Equipamiento ecuestre'
+      'Alimentos para lactancia',
+      'Bloques nutricionales',
+      'Medicamentos antiparasitarios'
     ]
   },
   {
-    id: 'insumos',
-    name: 'Insumos Agrícolas',
+    id: 'semillas',
+    name: 'Semillas',
     icon: '🌱',
-    description: 'Semillas y fertilizantes',
+    description: 'Semillas certificadas para cultivo',
     products: [
-      'Semillas certificadas',
+      'Semillas de maíz',
+      'Semillas de sorgo',
+      'Semillas de pasto',
+      'Semillas de soya',
+      'Semillas de hortalizas',
+      'Mezclas forrajeras'
+    ]
+  },
+  {
+    id: 'abonos',
+    name: 'Abonos y Fertilizantes',
+    icon: '🌿',
+    description: 'Nutrición para suelos y cultivos',
+    products: [
       'Fertilizantes orgánicos',
-      'Agroquímicos',
-      'Equipamiento agrícola'
+      'Fertilizantes químicos',
+      'Abonos nitrogenados',
+      'Fertilizantes foliares',
+      'Correctores de pH',
+      'Sustratos para siembra'
+    ]
+  },
+  {
+    id: 'pesticidas',
+    name: 'Pesticidas',
+    icon: '🦟',
+    description: 'Control de plagas agrícolas',
+    products: [
+      'Insecticidas',
+      'Fungicidas',
+      'Acaricidas',
+      'Nematicidas',
+      'Rodenticidas',
+      'Repelentes de plagas'
+    ]
+  },
+  {
+    id: 'herbicidas',
+    name: 'Herbicidas',
+    icon: '🌾',
+    description: 'Control de malezas',
+    products: [
+      'Herbicidas selectivos',
+      'Herbicidas no selectivos',
+      'Herbicidas pre-emergentes',
+      'Herbicidas post-emergentes',
+      'Desecantes',
+      'Adyuvantes'
+    ]
+  },
+  {
+    id: 'herramientas',
+    name: 'Herramientas para Fumigar',
+    icon: '🚜',
+    description: 'Equipamiento para aplicación de agroquímicos',
+    products: [
+      'Fumigadoras manuales',
+      'Fumigadoras motorizadas',
+      'Atomizadores',
+      'Aspersores',
+      'Equipos de protección',
+      'Bombas de presión'
     ]
   }
 ]
@@ -194,7 +274,15 @@ export default function CotizarPage() {
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Solicitar Cotización
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-600 mb-4">
+              Realizamos cotizaciones para todo tipo de productos agropecuarios y herramientas agrícolas
+            </p>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+              <p className="text-green-800 font-medium">
+                Cotizamos para: ganados, caballos, cerdos, aves, cabras, pesticidas, herbicidas, semillas, abonos y herramientas para fumigar
+              </p>
+            </div>
+            <p className="text-lg text-gray-600">
               Cuéntanos qué necesitas y te prepararemos una cotización personalizada para tu finca
             </p>
           </div>
