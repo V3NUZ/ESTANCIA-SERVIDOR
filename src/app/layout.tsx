@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/app/providers";
 import { HydrationFix } from "@/components/hydration-fix";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -84,6 +85,11 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              // Desactivar restauración automática de scroll del navegador
+              if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+              }
+              
               // Limpiar atributos de extensiones antes de React hydration
               (function() {
                 var problematicAttrs = ['bis_skin_checked', 'data-new-gr-c-s-check-loaded', 'data-gr-ext-installed'];
@@ -111,6 +117,7 @@ export default function RootLayout({
           storageKey="animalworld-theme"
         >
           <HydrationFix />
+          <ScrollToTop />
           {children}
           <Toaster />
         </ThemeProvider>
