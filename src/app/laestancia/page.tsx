@@ -21,7 +21,7 @@ import { Badge } from '@/components/ui/badge'
 import { 
   ArrowLeft, Phone, MessageCircle, 
   Calculator, Store, CheckCircle, Send, Truck,
-  Shield, Star, Users, MapPin
+  Shield, Star, Users, MapPin, Dog, Cat
 } from 'lucide-react'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
@@ -49,7 +49,7 @@ export default function LaEstanciaPage() {
   const [selectedProduct, setSelectedProduct] = useState<any>(null)
 
   // Categorías principales de productos agropecuarios
-  // Actualizado con todas las categorías solicitadas
+  // Actualizado con todas las categorías solicitadas incluyendo perros y gatos
   const farmCategories = [
     { 
       icon: '🐄', 
@@ -90,6 +90,22 @@ export default function LaEstanciaPage() {
       description: 'Nutrición y manejo caprino especializado',
       color: 'from-yellow-500 to-yellow-700',
       image: '/cabras-caprinas.jpg'
+    },
+    { 
+      icon: '🐕', 
+      name: 'Perros', 
+      count: '100+ productos',
+      description: 'Alimentos y accesorios para perros',
+      color: 'from-blue-500 to-blue-700',
+      image: '/ganado-bovino.jpg'
+    },
+    { 
+      icon: '🐈', 
+      name: 'Gatos', 
+      count: '80+ productos',
+      description: 'Alimentos y accesorios para gatos',
+      color: 'from-indigo-500 to-indigo-700',
+      image: '/ganado-bovino.jpg'
     },
     { 
       icon: '🌱', 
@@ -219,21 +235,22 @@ export default function LaEstanciaPage() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      {/* Botón de Volver Atrás */}
-      <div className="container mx-auto px-4 pt-6">
-        <Button 
-          variant="outline" 
-          onClick={() => window.history.back()}
-          className="mb-6 bg-white hover:bg-gray-50 border-2 border-gray-300 text-gray-700 hover:border-gray-400 hover:text-gray-900 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-2"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Volver Atrás
-        </Button>
-      </div>
-
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
         <div className="absolute inset-0 bg-black/20"></div>
+        
+        {/* Botón de volver atrás en la esquina superior izquierda */}
+        <div className="absolute top-6 left-6 z-20">
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={() => window.location.href = '/'}
+            className="text-white hover:text-green-200 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+        </div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="text-6xl mb-6">🌾</div>
@@ -351,7 +368,7 @@ export default function LaEstanciaPage() {
                     className="w-full bg-green-600 hover:bg-green-700 font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 rounded-xl px-4 py-3 border-2 border-green-700/30"
                     onClick={() => handleQuickContact('whatsapp')}
                   >
-                    Cotizar productos
+                    Ver productos disponibles
                   </Button>
                 </CardContent>
               </Card>
