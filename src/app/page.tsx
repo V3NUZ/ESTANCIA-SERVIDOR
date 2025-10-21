@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { 
   ArrowRight, Phone, Mail, MapPin, Clock, ShoppingBag, 
   Heart, Stethoscope, Truck, Star, Users, Shield,
-  Dog, Cat, ChevronRight, Home,
+  Dog, Cat, ChevronRight, Home as HomeIcon,
   Instagram, Facebook, Twitter
 } from 'lucide-react'
 import Link from 'next/link'
