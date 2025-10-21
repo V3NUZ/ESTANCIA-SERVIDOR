@@ -1,5 +1,19 @@
 'use client'
 
+/**
+ * Página principal de La Estancia - Productos Agropecuarios
+ * 
+ * Esta página muestra:
+ * - Catálogo de productos agropecuarios
+ * - Categorías principales (ganado, aves, porcinos, equinos, insumos agrícolas)
+ * - Información de contacto y cotizaciones
+ * - Productos destacados con precios y descripciones
+ * 
+ * @author AnimalWorld La Estancia Team
+ * @version 2.0.0
+ * @since 2025-10-21
+ */
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -25,7 +39,8 @@ export default function LaEstancia() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  // Contact information for La Estancia
+  // Información de contacto - La Estancia
+  // NOTA: Solo mantenemos la tienda principal, eliminamos punto de venta falso
   const contactInfo = {
     mainStore: {
       name: "La Estancia - Productos Agropecuarios",
@@ -77,6 +92,8 @@ export default function LaEstancia() {
     setSelectedProduct(null)
   }
 
+  // Categorías principales de productos agropecuarios
+  // Incluye la categoría de Insumos Agrícolas con semillas que fue restaurada
   const farmCategories = [
     { 
       icon: '🐄', 
@@ -104,12 +121,14 @@ export default function LaEstancia() {
     },
     { 
       icon: '🌱', 
-      name: 'Insumos Agrícolas', 
+      name: 'Insumos Agrícolas', // Categoría restaurada - incluye semillas
       count: '50+ productos',
       description: 'Semillas, fertilizantes y agroquímicos'
     }
   ]
 
+  // Productos destacados en la página principal
+  // Incluye productos de todas las categorías, incluyendo semillas agrícolas
   const featuredProducts = [
     {
       id: 1,

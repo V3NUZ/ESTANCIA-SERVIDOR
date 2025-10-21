@@ -1,5 +1,19 @@
 'use client'
 
+/**
+ * Página de Cotizaciones - La Estancia
+ * 
+ * Esta página permite a los clientes solicitar cotizaciones personalizadas para:
+ * - Productos agropecuarios (ganado, aves, porcinos, equinos)
+ * - Insumos agrícolas (semillas, fertilizantes, agroquímicos)
+ * 
+ * El formulario envía la información directamente por WhatsApp
+ * 
+ * @author AnimalWorld La Estancia Team
+ * @version 2.0.0
+ * @since 2025-10-21
+ */
+
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -11,7 +25,8 @@ import {
   Calculator, Store, CheckCircle, Send
 } from 'lucide-react'
 
-// Información de contacto - La Estancia
+// Información de contacto - La Estancia (solo tienda principal)
+// NOTA: Se eliminó el punto de venta falso de Funza
 const contactInfo = {
   mainStore: {
     name: "La Estancia - Productos Agropecuarios",
@@ -22,6 +37,8 @@ const contactInfo = {
   }
 }
 
+// Categorías de productos disponibles para cotización
+// Incluye Insumos Agrícolas con semillas (categoría restaurada)
 const productCategories = [
   { id: 'ganado', name: 'Ganado Bovino', icon: '🐄', description: 'Concentrados, suplementos, medicamentos' },
   { id: 'aves', name: 'Aves', icon: '🐓', description: 'Balanceados, incubadoras, vitaminas' },
