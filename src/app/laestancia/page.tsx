@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * Página principal de La Estancia - Productos Agropecuarios
  * 
