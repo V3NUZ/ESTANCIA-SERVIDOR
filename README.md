@@ -1,161 +1,3 @@
-<<<<<<< HEAD
-# AnimalWorld - La Estancia
-
-🐾 **Tu tienda especializada en productos para mascotas y animales de granja en Bogotá**
-
-Clínica veterinaria presencial para mascotas y productos agropecuarios con semillas certificadas. Calidad y confianza en Bogotá.
-
-## 🌟 Características
-
-- **Animal World**: Clínica veterinaria y productos premium para mascotas
-- **La Estancia**: Insumos agropecuarios, semillas y productos para ganadería
-- **Diseño Responsive**: Funciona perfectamente en desktop y móviles
-- **Next.js 15**: Construido con la última tecnología
-- **TypeScript**: Código tipo-seguro y mantenible
-
-## 🚀 Inicio Rápido
-
-### Prerrequisitos
-
-- Node.js 18+ 
-- npm o yarn
-
-### Instalación
-
-1. **Clona el repositorio**
-   ```bash
-   git clone https://github.com/V3NUZ/ESTANCIA-SERVIDOR.git
-   cd ESTANCIA-SERVIDOR
-   ```
-
-2. **Instala dependencias**
-   ```bash
-   npm install
-   ```
-
-3. **Configura la base de datos**
-   ```bash
-   npm run db:push
-   ```
-
-4. **Inicia el servidor de desarrollo**
-   ```bash
-   npm run dev
-   ```
-
-5. **Abre tu navegador**
-   ```
-   http://localhost:3000
-   ```
-
-## 📁 Estructura del Proyecto
-
-```
-ESTANCIA-SERVIDOR/
-├── src/
-│   ├── app/                    # Páginas y rutas de la app
-│   │   ├── (pages)/           # Páginas principales
-│   │   ├── api/               # Endpoints de la API
-│   │   ├── admin/             # Panel de administración
-│   │   └── layout.tsx         # Layout principal
-│   ├── components/            # Componentes React
-│   │   └── ui/               # Componentes UI reutilizables
-│   ├── hooks/                # Hooks personalizados
-│   └── lib/                  # Utilidades y configuración
-├── public/                   # Archivos estáticos
-├── prisma/                   # Esquema de base de datos
-└── docs/                     # Documentación
-```
-
-## 🛠️ Scripts Disponibles
-
-```bash
-# Desarrollo
-npm run dev          # Inicia servidor de desarrollo
-npm run build        # Construye para producción
-npm run start        # Inicia servidor de producción
-
-# Base de datos
-npm run db:push      # Aplica cambios al schema
-npm run db:generate  # Genera Prisma Client
-npm run db:studio    # Abre Prisma Studio
-
-# Calidad
-npm run lint         # Verifica código con ESLint
-```
-
-## 📞 Contacto
-
-### Animal World - Mascotas
-- 📍 **Dirección**: Carrera 58 #128B-88, Bogotá, Colombia
-- 📞 **Teléfono**: +57 314 2822728
-- 💬 **WhatsApp**: +57 314 2822728
-- 📧 **Email**: clinica@animalworld.co
-
-### La Estancia - Agropecuarios
-- 📍 **Dirección**: Avenida Caracas 70A-83, Bogotá, Colombia
-- 📞 **Teléfono**: +57 310 6871639
-- 💬 **WhatsApp**: +57 310 6871639
-- 📧 **Email**: info@laestancia.co
-
-## 🌐 Despliegue
-
-El proyecto está configurado para desplegarse fácilmente en:
-
-- **Vercel** (Recomendado)
-- **Netlify**
-- **GitHub Pages**
-- Cualquier plataforma que soporte Next.js
-
-### Despliegue en Vercel
-
-1. Conecta tu repositorio a Vercel
-2. Configura las variables de entorno:
-   - `DATABASE_URL`
-   - `JWT_SECRET`
-3. Despliega automáticamente
-
-## 🔧 Variables de Entorno
-
-Crea un archivo `.env` con las siguientes variables:
-
-```env
-DATABASE_URL="file:./dev.db"
-JWT_SECRET="your-secret-key-here"
-```
-
-## 📱 Tecnologías Utilizadas
-
-- **Frontend**: Next.js 15, React 19, TypeScript 5
-- **Styling**: Tailwind CSS 4, shadcn/ui
-- **Database**: Prisma ORM con SQLite
-- **Icons**: Lucide React
-- **Animations**: Framer Motion
-- **Deployment**: Vercel ready
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crea una rama feature (`git checkout -b feature/amazing-feature`)
-3. Commit tus cambios (`git commit -m 'Add amazing feature'`)
-4. Push a la rama (`git push origin feature/amazing-feature`)
-5. Abre un Pull Request
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Mira el archivo [LICENSE](LICENSE) para más detalles.
-
-## 🙏 Agradecimientos
-
-- A todos nuestros clientes y su confianza en nuestros servicios
-- Al equipo de AnimalWorld y La Estancia por su dedicación
-
----
-
-**© 2024 AnimalWorld La Estancia. Todos los derechos reservados. Bogotá, Colombia**
-
-Hecho con ❤️ para el cuidado animal y agropecuario
-=======
 # 🌾 AnimalWorld La Estancia - Plataforma Agropecuaria Profesional
 
 <div align="center">
@@ -192,6 +34,36 @@ Facilitar el acceso a productos y servicios de calidad para el sector agropecuar
 
 ---
 
+## 🚀 ESTADO DEL PROYECTO - PRODUCCIÓN
+
+### ✅ **PROYECTO DESPLEGADO Y ACTIVO**
+
+**Estado Actual**: 🟢 **EN PRODUCCIÓN - ACTIVO**
+
+- **🌐 Sitio Web**: [https://animalworld-laestancia.vercel.app](https://animalworld-laestancia.vercel.app)
+- **🚀 Plataforma**: Vercel (Despliegue automático)
+- **📊 Estado**: Fully funcional y operativo
+- **🔗 Conexión GitHub-Vercel**: Configurada y activa
+- **🔄 CI/CD**: Integración continua implementada
+
+### ⚠️ **INSTRUCCIONES IMPORTANTES**
+
+**NO MODIFICAR LA CONFIGURACIÓN DE DESPLIEGUE**
+
+- ❌ **No volver a conectar el repositorio a Vercel**
+- ❌ **No modificar la configuración de despliegue existente**
+- ❌ **No cambiar los ajustes de integración continua**
+- ❌ **No alterar el vínculo actual con Vercel**
+
+**CAMBIOS FUTUROS**
+
+- ✅ **Realizar cambios directamente en el código**
+- ✅ **Hacer commits y push al repositorio**
+- ✅ **Vercel desplegará automáticamente los cambios**
+- ✅ **Mantener la documentación actualizada**
+
+---
+
 ## 🏗️ Arquitectura Técnica
 
 ### Stack Tecnológico Principal
@@ -208,10 +80,10 @@ Facilitar el acceso a productos y servicios de calidad para el sector agropecuar
 
 ### Infraestructura de Despliegue
 
-- **🌐 Frontend**: [Vercel](https://vercel.com) - Despliegue automático y global
-- **🔧 Backend**: [Railway](https://railway.app) - Servidores escalables
-- **📊 Base de Datos**: PostgreSQL en producción
-- **🔄 CI/CD**: GitHub Actions para integración continua
+- **🌐 Frontend**: [Vercel](https://vercel.com) - **ACTIVO Y CONFIGURADO**
+- **🔧 Backend**: Servidores escalables
+- **📊 Base de Datos**: SQLite para desarrollo
+- **🔄 CI/CD**: GitHub Actions - **CONFIGURADO**
 
 ---
 
@@ -224,7 +96,6 @@ Facilitar el acceso a productos y servicios de calidad para el sector agropecuar
 const animalWorldFeatures = {
   atenciónVeterinaria: "Servicio presencial especializado",
   productosPremium: "Alimentos y accesorios de alta calidad",
-  emergencias24_7: "Atención urgente las 24 horas",
   consultasOnline: "Asesoría virtual para mascotas",
   tiendaFísica: "Showroom en Bogotá, Colombia"
 }
@@ -235,13 +106,13 @@ const animalWorldFeatures = {
 ```typescript
 // Sistema completo de gestión agropecuaria
 const laEstanciaFeatures = {
-  catálogoCompleto: "Más de 1,200 productos especializados",
+  catálogoCompleto: "Más de 500 productos especializados",
   categoríasPrincipales: [
-    "Ganado Bovino (200+ productos)",
-    "Aves y Corral (180+ productos)", 
-    "Porcinos (100+ productos)",
-    "Equinos (80+ productos)",
-    "Insumos Agrícolas (50+ productos)"
+    "Ganado Bovino",
+    "Aves y Corral", 
+    "Porcinos",
+    "Equinos",
+    "Insumos Agrícolas"
   ],
   sistemaCotizaciones: "Presupuestos personalizados vía WhatsApp",
   semillasCertificadas: "Garantía de germinación y calidad",
@@ -252,11 +123,9 @@ const laEstanciaFeatures = {
 ### 🔧 Características Técnicas Avanzadas
 
 - **📱 Diseño 100% Responsive**: Adaptado para todos los dispositivos
-- **🌙 Modo Oscuro/Claro**: Interfaz adaptable a preferencias del usuario
 - **⚡ Optimización SEO**: Posicionamiento optimizado para motores de búsqueda
 - **🔒 Seguridad Nivel Empresa**: TypeScript y autenticación robusta
 - **🎨 Componentes Reutilizables**: Sistema de diseño consistente
-- **📊 Analytics Integrado**: Métricas de uso y comportamiento
 - **🔄 Navegación Fluida**: Scroll automático y transiciones suaves
 
 ---
@@ -268,7 +137,6 @@ const laEstanciaFeatures = {
 - **Node.js**: Versión 18.17.0 o superior
 - **npm**: Versión 9.0.0 o superior  
 - **Git**: Sistema de control de versiones
-- **Cuenta Vercel**: Para despliegue en producción
 
 ### 🔧 Proceso de Instalación
 
@@ -291,8 +159,6 @@ npm list next typescript @prisma/client
 cp .env.example .env.local
 
 # Configurar variables esenciales
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your-secret-key-here
 DATABASE_URL="file:./dev.db"
 ```
 
@@ -303,9 +169,6 @@ npm run db:generate
 
 # Sincronizar schema con base de datos
 npm run db:push
-
-# (Opcional) Ejecutar migraciones
-npm run db:migrate
 ```
 
 #### 5. Iniciar Servidor de Desarrollo
@@ -352,52 +215,6 @@ npm run db:reset
 
 ---
 
-## 🌐 Flujo de Trabajo Profesional con Git
-
-### 🌳 Estructura de Ramas
-
-```
-main (producción)
-├── develop (integración)
-├── feature/nueva-funcionalidad
-├── hotfix/corrección-urgente
-└── release/versión-estable
-```
-
-### 📝 Convención de Commits (Estándar Conventional Commits)
-
-```bash
-# Nuevas funcionalidades
-git commit -m "feat: agregar sistema de cotizaciones en línea"
-
-# Correcciones de errores
-git commit -m "fix: resolver problema de scroll en navegación"
-
-# Documentación
-git commit -m "docs: actualizar README con guía de instalación"
-
-# Estilos y formato
-git commit -m "style: normalizar componentes con shadcn/ui"
-
-# Refactorización
-git commit -m "refactor: optimizar estructura de componentes"
-
-# Pruebas
-git commit -m "test: agregar pruebas unitarias para cotizaciones"
-
-# Mantenimiento
-git commit -m "chore: actualizar dependencias a versiones seguras"
-```
-
-### 🔄 Proceso de Despliegue
-
-1. **Desarrollo**: Crear rama `feature/` desde `develop`
-2. **Revisión**: Pull Request con revisión de código
-3. **Integración**: Merge a `develop` con pruebas automáticas
-4. **Producción**: Merge a `main` con despliegue automático
-
----
-
 ## 📞 Información Comercial y de Contacto
 
 ### 👑 Desarrollador Principal
@@ -418,55 +235,17 @@ git commit -m "chore: actualizar dependencias a versiones seguras"
 | **💬 WhatsApp** | +57 314 2822728 |
 | **📧 Email** | clinica@animalworld.co |
 | **⏰ Horario** | Lunes a Sábado: 8:00 AM - 6:00 PM |
-| **🚨 Emergencias** | 24/7 para casos urgentes |
 
 ### 🌾 La Estancia - Agropecuarios
 
 | Información | Detalle |
 |-------------|---------|
-| **📍 Dirección** | Avenida Caracas 70A-89, Bogotá, Colombia |
+| **📍 Dirección** | Avenida Caracas 70A-83, Bogotá, Colombia |
 | **📞 Teléfono** | +57 310 6871639 |
 | **💬 WhatsApp** | +57 310 6871639 |
-| **📧 Email** | contacto@laestancia.co |
+| **📧 Email** | info@laestancia.co |
 | **⏰ Horario** | Lunes a Sábado: 8:00 AM - 6:00 PM |
 | **📦 Cobertura** | Bogotá y todo Colombia |
-
----
-
-## 🔧 Configuración de Producción
-
-### 🌐 Despliegue en Vercel
-
-1. **Conectar Repositorio**: Vincular GitHub a Vercel
-2. **Configurar Build**: `npm run build`
-3. **Variables de Entorno**: Configurar todas las variables necesarias
-4. **Dominio Personalizado**: Configurar dominio personalizado
-5. **SSL Automático**: Vercel proporciona certificado SSL gratuito
-
-### 🗄️ Configuración de Base de Datos
-
-```typescript
-// Ejemplo de configuración de Prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model Producto {
-  id          Int      @id @default(autoincrement())
-  nombre      String
-  categoria   String
-  precio      Decimal
-  descripcion String?
-  imagen      String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-```
 
 ---
 
@@ -475,11 +254,10 @@ model Producto {
 ### 📊 Estadísticas del Proyecto
 
 - **⭐ Clientes Satisfechos**: 10,000+
-- **📦 Productos Disponibles**: 1,200+
-- **🏆 Años de Experiencia**: 25+
+- **📦 Productos Disponibles**: 500+
+- **🏆 Años de Experiencia**: 15+
 - **👥 Técnicos Especializados**: 15
 - **🌱 Semillas Certificadas**: 50+ variedades
-- **📈 Crecimiento Anual**: 35%
 
 ### 🎯 KPIs de Rendimiento
 
@@ -506,7 +284,7 @@ model Producto {
 
 1. **🍴 Hacer Fork** del repositorio
 2. **🌿 Crear Rama** `feature/tu-nueva-funcionalidad`
-3. **💻 Desarrollar** la funcionalidad con pruebas
+3. **💻 Desarrollar** la funcionalidad
 4. **📝 Hacer Commit** con mensajes claros
 5. **🚀 Push** a tu rama
 6. **📋 Crear Pull Request** con descripción detallada
@@ -519,7 +297,7 @@ model Producto {
 
 ```
 AnimalWorld La Estancia - Plataforma Agropecuaria Profesional
-Copyright (c) 2025 AnimalWorld La Estancia
+Copyright (c) 2024 AnimalWorld La Estancia
 
 Todos los derechos reservados.
 
@@ -529,18 +307,11 @@ No está permitida la reproducción total o parcial sin autorización expresa.
 Desarrollado por V3NUZ y el equipo de AnimalWorld La Estancia.
 ```
 
-### 🔒 Privacidad y Seguridad
-
-- **🛡️ Datos Encriptados**: Toda la información sensible está encriptada
-- **🔐 Autenticación Segura**: Sistema de login robusto
-- **📋 GDPR Compliance**: Cumplimiento de regulaciones de privacidad
-- **🔒 HTTPS Forzado**: Todas las conexiones son seguras
-
 ---
 
 ## 🚀 Roadmap y Futuro del Proyecto
 
-### 📅 Próximas Actualizaciones (Q4 2025)
+### 📅 Próximas Actualizaciones
 
 - **📱 Aplicación Móvil Nativa**: iOS y Android
 - **🤖 IA para Recomendaciones**: Sistema inteligente de productos
@@ -550,7 +321,7 @@ Desarrollado por V3NUZ y el equipo de AnimalWorld La Estancia.
 
 ### 🎯 Visión a Largo Plazo
 
-Convertirnos en la plataforma líder de agro-negocios en Latinoamérica, expandiendo nuestros servicios a México, Argentina y Perú para 2026.
+Convertirnos en la plataforma líder de agro-negocios en Latinoamérica, expandiendo nuestros servicios a México, Argentina y Perú.
 
 ---
 
@@ -561,46 +332,17 @@ Convertirnos en la plataforma líder de agro-negocios en Latinoamérica, expandi
 - **📧 Email Técnico**: soporte@animalworld.co
 - **📧 Email Personal**: donpepitacos@gmail.com
 - **💬 WhatsApp Empresarial**: +57 310 6871639
-- **📋 Sistema de Tickets**: [Portal de Soporte](https://soporte.animalworld.co)
-- **📚 Documentación**: [Wiki del Proyecto](https://docs.animalworld.co)
-
-### 🌐 Redes Sociales
-
-- **📷 Instagram**: [@animalworld_laestancia](https://instagram.com/animalworld_laestancia)
-- **📘 Facebook**: [AnimalWorld La Estancia](https://facebook.com/animalworldlaestancia)
-- **🐦 Twitter**: [@AnimalWLaEstancia](https://twitter.com/AnimalWLaEstancia)
-- **💼 LinkedIn**: [AnimalWorld La Estancia](https://linkedin.com/company/animalworld-laestancia)
-
----
-
-## 🏆 Reconocimientos y Créditos
-
-### 🎖️ Créditos de Desarrollo
-
-**Desarrollado con ❤️ y pasión por Alejandro (V3NUZ)**
-
-- **👑 Project Lead**: Alejandro (V3NUZ) - Arquitectura completa y visión del proyecto
-- **💻 Full Stack Development**: Implementación frontend y backend de alta calidad
-- **🎨 UI/UX Design**: Diseño moderno e intuitivo de interfaz y experiencia de usuario
-- **📊 DevOps**: Configuración avanzada de CI/CD y despliegue automatizado
-- **🔧 Optimización**: Mejoras de rendimiento, SEO y experiencia de usuario
-- **🌟 Innovación**: Implementación de tecnologías de vanguardia y mejores prácticas
-
-### 🙏 Agradecimientos Especiales
-
-- **AnimalWorld La Estancia Team**: Por la confianza y visión del proyecto
-- **Comunidad Open Source**: Por las herramientas y librerías utilizadas
-- **Clientes y Usuarios**: Por el feedback constante que mejora el proyecto
 
 ---
 
 <div align="center">
 
-**🌾 AnimalWorld La Estancia - Transformando Digitalmente el Campo Colombiano 🌾**
+**© 2024 AnimalWorld La Estancia. Todos los derechos reservados. Bogotá, Colombia**
 
-*Desarrollado con ❤️ por Alejandro (V3NUZ) | Copyright © 2025 | Todos los derechos reservados*
+Hecho con ❤️ para el cuidado animal y agropecuario
 
-[![Built with love by Alejandro (V3NUZ)](https://img.shields.io/badge/Built%20with%20❤️%20by-Alejandro%20(V3NUZ)-red?style=for-the-badge)](https://github.com/V3NUZ)
+[🌐 Sitio Web Activo](https://animalworld-laestancia.vercel.app) •
+[📧 Contacto](mailto:donpepitacos@gmail.com) •
+[🌐 GitHub](https://github.com/V3NUZ/ESTANCIA-SERVIDOR)
 
 </div>
->>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
