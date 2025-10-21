@@ -2,22 +2,12 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-<<<<<<< HEAD
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
-import { 
-  ArrowRight, Phone, Mail, MapPin, Clock, ShoppingBag, 
-  Heart, Stethoscope, Truck, Star, Users, Shield,
-  Dog, Cat, ChevronRight, ArrowLeft,
-=======
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { 
   ArrowRight, Phone, Mail, MapPin, Clock, ShoppingBag, 
   Heart, Stethoscope, Truck, Star, Users, Shield,
-  Dog, Cat, ChevronRight, Home as HomeIcon,
->>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
+  Dog, Cat, ChevronRight, ArrowLeft,
   Instagram, Facebook, Twitter
 } from 'lucide-react'
 import Link from 'next/link'
@@ -409,13 +399,13 @@ export default function Home() {
               <h4 className="font-semibold mb-4 text-lg">Síguenos</h4>
               <div className="flex gap-4">
                 <Button variant="outline" size="icon" className="border-gray-600 text-gray-400 hover:text-white hover:bg-gray-700">
-                  <Facebook className="w-5 h-5" />
+                  <Facebook className="h-5 w-5" />
                 </Button>
                 <Button variant="outline" size="icon" className="border-gray-600 text-gray-400 hover:text-white hover:bg-gray-700">
-                  <Instagram className="w-5 h-5" />
+                  <Instagram className="h-5 w-5" />
                 </Button>
                 <Button variant="outline" size="icon" className="border-gray-600 text-gray-400 hover:text-white hover:bg-gray-700">
-                  <Twitter className="w-5 h-5" />
+                  <Twitter className="h-5 w-5" />
                 </Button>
               </div>
             </div>

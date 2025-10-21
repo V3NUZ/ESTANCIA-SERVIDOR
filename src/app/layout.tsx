@@ -1,29 +1,22 @@
-<<<<<<< HEAD
-=======
 /**
  * Layout Principal - AnimalWorld La Estancia
  * 
- * Componente raíz que envuelve toda la aplicación.
- * Configura el tema, metadata, y estructura base del sitio.
+ * Layout principal del proyecto con configuración completa de metadatos,
+ * tema, fuentes y optimización para SEO.
  * 
- * @author V3NUZ (Project Owner & Lead Developer)
- * @version 2.0.0
- * @since 2025-10-21
+ * @author Alejandro (V3NUZ)
+ * @version 1.0.0
+ * @since 2024
  * @copyright AnimalWorld La Estancia © 2025
  */
 
->>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/app/providers";
 import { HydrationFix } from "@/components/hydration-fix";
-<<<<<<< HEAD
-import { CleanScript } from "@/components/clean-script";
-=======
 import { ScrollToTop } from "@/components/scroll-to-top";
->>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -104,14 +97,6 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-<<<<<<< HEAD
-=======
-              // Desactivar restauración automática de scroll del navegador
-              if ('scrollRestoration' in history) {
-                history.scrollRestoration = 'manual';
-              }
-              
->>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
               // Limpiar atributos de extensiones antes de React hydration
               (function() {
                 var problematicAttrs = ['bis_skin_checked', 'data-new-gr-c-s-check-loaded', 'data-gr-ext-installed'];
@@ -139,10 +124,7 @@ export default function RootLayout({
           storageKey="animalworld-theme"
         >
           <HydrationFix />
-<<<<<<< HEAD
-=======
           <ScrollToTop />
->>>>>>> 28cf33f0c3aa9ccad02f3ad92742a9e5e0030a86
           {children}
           <Toaster />
         </ThemeProvider>
