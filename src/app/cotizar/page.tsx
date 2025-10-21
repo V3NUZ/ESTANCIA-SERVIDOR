@@ -7,8 +7,8 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Textarea } from '@/components/ui/textarea'
 import { 
-  ArrowLeft, Phone, Mail, MapPin, MessageCircle, 
-  Calculator, Store, Tractor, CheckCircle, Send
+  ArrowLeft, Phone, MessageCircle, 
+  Calculator, Store, CheckCircle, Send
 } from 'lucide-react'
 
 // Información de contacto - La Estancia
@@ -19,13 +19,6 @@ const contactInfo = {
     phone: "+57 310 6871639",
     whatsapp: "+57 310 6871639",
     email: "contacto@laestancia.co"
-  },
-  farmSupplies: {
-    name: "La Estancia - Insumos Agrícolas",
-    address: "Kilómetro 3 Vía Funza, Cundinamarca", 
-    phone: "+57 315 8912345",
-    whatsapp: "+57 315 8912345",
-    email: "agricola@laestancia.co"
   }
 }
 
@@ -378,21 +371,12 @@ export default function CotizarPage() {
       {/* Contact Info */}
       <section className="py-12 px-4 bg-green-900 text-white">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <Store className="w-12 h-12 mx-auto mb-4 text-green-300" />
-              <h3 className="text-xl font-bold mb-2">Tienda Principal</h3>
-              <p className="text-green-200 mb-2">{contactInfo.mainStore.address}</p>
-              <p className="text-green-200 mb-2">{contactInfo.mainStore.phone}</p>
-              <p className="text-green-200">{contactInfo.mainStore.email}</p>
-            </div>
-            <div className="text-center">
-              <Tractor className="w-12 h-12 mx-auto mb-4 text-green-300" />
-              <h3 className="text-xl font-bold mb-2">Insumos Agrícolas</h3>
-              <p className="text-green-200 mb-2">{contactInfo.farmSupplies.address}</p>
-              <p className="text-green-200 mb-2">{contactInfo.farmSupplies.phone}</p>
-              <p className="text-green-200">{contactInfo.farmSupplies.email}</p>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <Store className="w-12 h-12 mx-auto mb-4 text-green-300" />
+            <h3 className="text-xl font-bold mb-2">Tienda Principal - La Estancia</h3>
+            <p className="text-green-200 mb-2">{contactInfo.mainStore.address}</p>
+            <p className="text-green-200 mb-2">{contactInfo.mainStore.phone}</p>
+            <p className="text-green-200">{contactInfo.mainStore.email}</p>
           </div>
         </div>
       </section>

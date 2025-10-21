@@ -2,13 +2,12 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Badge } from '@/components/ui/badge'
 import { 
   ArrowRight, Phone, Mail, MapPin, Clock, ShoppingBag, 
   Heart, Stethoscope, Truck, Star, Users, Shield,
-  Dog, Cat, ChevronRight, ArrowLeft,
+  Dog, Cat, ChevronRight, Home,
   Instagram, Facebook, Twitter
 } from 'lucide-react'
 import Link from 'next/link'
