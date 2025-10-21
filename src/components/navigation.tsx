@@ -6,6 +6,12 @@ import { Phone, Menu, X, Home } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+interface NavLink {
+  href: string
+  label: string
+  icon?: any
+}
+
 const contactInfo = {
   animalWorld: {
     phone: "+57 314 2822728",
@@ -37,8 +43,8 @@ export function Navigation() {
     setIsMobileMenuOpen(false)
   }, [])
 
-  const navLinks = useMemo(() => {
-    const links = [
+  const navLinks = useMemo((): NavLink[] => {
+    const links: NavLink[] = [
       { href: '/productos', label: 'Productos' },
       { href: '/servicios', label: 'Servicios' },
       { href: '/contacto', label: 'Contacto' },
