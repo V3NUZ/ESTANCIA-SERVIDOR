@@ -553,16 +553,16 @@ export default function ProductsPage() {
                         <Button
                           variant="outline"
                           size="icon"
-                          className="h-8 w-8 bg-white/80 hover:bg-white"
+                          className="h-8 w-8 bg-white hover:bg-white border-gray-300 shadow-md"
                         >
-                          <Heart className="h-4 w-4" />
+                          <Heart className="h-4 w-4 text-gray-600" />
                         </Button>
                         <Button
                           variant="outline"
                           size="icon"
-                          className="h-8 w-8 bg-white/80 hover:bg-white"
+                          className="h-8 w-8 bg-white hover:bg-white border-gray-300 shadow-md"
                         >
-                          <Share2 className="h-4 w-4" />
+                          <Share2 className="h-4 w-4 text-gray-600" />
                         </Button>
                       </div>
                     </div>

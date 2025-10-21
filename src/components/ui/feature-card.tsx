@@ -60,8 +60,7 @@ export function FeatureCard({
           
           <div className={`
             absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-600/5
-            transition-opacity duration-300
-            ${isHovered ? 'opacity-100' : 'opacity-0'}
+            opacity-100
           `} />
         </CardContent>
       </Card>
