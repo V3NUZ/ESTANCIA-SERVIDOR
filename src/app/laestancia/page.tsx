@@ -33,13 +33,6 @@ export default function LaEstancia() {
       phone: "+57 310 6871639",
       whatsapp: "+57 310 6871639",
       email: "contacto@laestancia.co"
-    },
-    farmSupplies: {
-      name: "La Estancia - Insumos Agrícolas",
-      address: "Kilómetro 3 Vía Funza, Cundinamarca", 
-      phone: "+57 315 8912345",
-      whatsapp: "+57 315 8912345",
-      email: "agricola@laestancia.co"
     }
   }
 
@@ -108,6 +101,12 @@ export default function LaEstancia() {
       name: 'Equinos', 
       count: '80+ productos',
       description: 'Forrajes, herrajes y cuidado'
+    },
+    { 
+      icon: '🌱', 
+      name: 'Insumos Agrícolas', 
+      count: '50+ productos',
+      description: 'Semillas, fertilizantes y agroquímicos'
     }
   ]
 
@@ -149,6 +148,18 @@ export default function LaEstancia() {
       description: 'Fórmula premium para caballos de competencia'
     },
     {
+      id: 15,
+      name: 'Semillas de Maíz Híbrido',
+      category: 'agricola',
+      price: '$120.000',
+      originalPrice: '$140.000',
+      image: '🌽',
+      badge: 'Alto rendimiento',
+      rating: 4,
+      reviews: 189,
+      description: 'Semillas certificadas de máximo rendimiento'
+    },
+    {
       id: 2,
       name: 'Sal Mineralizado para Ganado',
       category: 'ganado',
@@ -186,7 +197,10 @@ export default function LaEstancia() {
     
     // Insumos Agrícolas
     { id: 14, name: 'Fertilizante Orgánico Premium', category: 'agricola', price: '$55.000', originalPrice: '$65.000', rating: 5, reviews: 234, icon: '🌱', description: 'Fertilizante 100% orgánico' },
-    { id: 15, name: 'Semillas de Maíz Híbrido', category: 'agricola', price: '$120.000', originalPrice: '$140.000', rating: 4, reviews: 189, icon: '🌽', description: 'Semillas de alto rendimiento' }
+    { id: 15, name: 'Semillas de Maíz Híbrido', category: 'agricola', price: '$120.000', originalPrice: '$140.000', rating: 4, reviews: 189, icon: '🌽', description: 'Semillas de alto rendimiento' },
+    { id: 16, name: 'Semillas de Soya Certificadas', category: 'agricola', price: '$85.000', originalPrice: '$95.000', rating: 5, reviews: 156, icon: '🌰', description: 'Semillas de soya de alta calidad' },
+    { id: 17, name: 'Fertilizante NPK 15-15-15', category: 'agricola', price: '$75.000', originalPrice: '$85.000', rating: 4, reviews: 203, icon: '🧪', description: 'Fertilizante balanceado completo' },
+    { id: 18, name: 'Herbicida Selectivo', category: 'agricola', price: '$45.000', originalPrice: '$52.000', rating: 4, reviews: 178, icon: '🌿', description: 'Control selectivo de malezas' }
   ]
 
   const filteredProducts = activeCategory === 'todos' 

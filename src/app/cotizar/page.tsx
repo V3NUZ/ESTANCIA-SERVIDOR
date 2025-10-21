@@ -27,7 +27,7 @@ const productCategories = [
   { id: 'aves', name: 'Aves', icon: '🐓', description: 'Balanceados, incubadoras, vitaminas' },
   { id: 'porcinos', name: 'Porcinos', icon: '🐷', description: 'Nutrición especializada' },
   { id: 'equinos', name: 'Equinos', icon: '🐴', description: 'Forrajes, herrajes, cuidado' },
-  { id: 'agricola', name: 'Insumos Agrícolas', icon: '🌱', description: 'Fertilizantes, semillas, agroquímicos' }
+  { id: 'agricola', name: 'Insumos Agrícolas', icon: '🌱', description: 'Semillas, fertilizantes, agroquímicos' }
 ]
 
 export default function CotizarPage() {
