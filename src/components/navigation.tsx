@@ -2,8 +2,9 @@
 
 import { useState, useCallback, useMemo } from 'react'
 import { Button } from '@/components/ui/button'
-import { Phone, Menu, X } from 'lucide-react'
+import { Phone, Menu, X, Home } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const contactInfo = {
   animalWorld: {
@@ -18,6 +19,7 @@ const contactInfo = {
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const handleQuickContact = useCallback((method: string, brand: 'animalWorld' | 'laEstancia' = 'animalWorld') => {
     const info = contactInfo[brand]
@@ -35,20 +37,28 @@ export function Navigation() {
     setIsMobileMenuOpen(false)
   }, [])
 
-  const navLinks = useMemo(() => [
-    { href: '/', label: 'Inicio' },
-    { href: '/productos', label: 'Productos' },
-    { href: '/servicios', label: 'Servicios' },
-    { href: '/contacto', label: 'Contacto' },
-  ], [])
+  const navLinks = useMemo(() => {
+    const links = [
+      { href: '/productos', label: 'Productos' },
+      { href: '/servicios', label: 'Servicios' },
+      { href: '/contacto', label: 'Contacto' },
+    ]
+    
+    // Solo agregar "Inicio" si no estamos en la página principal
+    if (pathname !== '/') {
+      links.unshift({ href: '/', label: 'Inicio', icon: Home })
+    }
+    
+    return links
+  }, [pathname])
 
   return (
     <header className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Siempre redirige a la página principal */}
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <img 
                 src="https://z-cdn-media.chatglm.cn/files/64d94c45-27c9-45e1-8ad3-9bc04b2fa260_logo.jpg?auth_key=1792540140-75a2b2d8c6d347fda35095901213cea9-0-94f7f0e249dcd9265a490ea16dc0a8b3"
                 alt="AnimalWorld La Estancia"
@@ -67,8 +77,9 @@ export function Navigation() {
               <Link 
                 key={link.href}
                 href={link.href} 
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center gap-2"
               >
+                {link.icon && <link.icon className="h-4 w-4" />}
                 {link.label}
               </Link>
             ))}
@@ -95,9 +106,10 @@ export function Navigation() {
                 <Link 
                   key={link.href}
                   href={link.href} 
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2 flex items-center gap-2"
                   onClick={closeMobileMenu}
                 >
+                  {link.icon && <link.icon className="h-4 w-4" />}
                   {link.label}
                 </Link>
               ))}
